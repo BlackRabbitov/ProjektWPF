@@ -25,13 +25,13 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Content="Name" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"></Label>
-        <Button Height="30" Grid.Row="1" Grid.Column="1" FontSize="16" Margin="5">
+        <Label Content="Name" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="WhiteSmoke"></Label>
+        <Button Name="Accept_Button" Height="30" Grid.Row="1" Grid.Column="1" FontSize="16" Margin="5" Click="Accept_Button_Click">
             <DockPanel LastChildFill="True">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Accept" ></TextBlock>
             </DockPanel>
         </Button>
-        <Button Height="30" Grid.Row="1" Grid.Column="2" FontSize="16" Margin="5">
+        <Button Name="Cancel_Button" Height="30" Grid.Row="1" Grid.Column="2" FontSize="16" Margin="5" Click="Cancel_Button_Click">
             <DockPanel LastChildFill="True">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Cancel" ></TextBlock>
             </DockPanel>

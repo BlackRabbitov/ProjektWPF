@@ -119,7 +119,7 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Export" ></TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="30" Grid.Row="3" Grid.ColumnSpan="3" FontSize="16" Margin="40,7,40,15" >
+            <Button Name="Settings_Button" Height="30" Grid.Row="3" Grid.ColumnSpan="3" FontSize="16" Margin="40,7,40,15" Click="Settings_Button_Click">
                 <DockPanel LastChildFill="True">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Settings" ></TextBlock>
                 </DockPanel>

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ProjektWPF
 {
     /// <summary>
-    /// Logika interakcji dla klasy CategoryWindow.xaml
+    /// Logika interakcji dla klasy SettingsWindow.xaml
     /// </summary>
-    public partial class CategoryWindow : Window
+    public partial class SettingsWindow : Window
     {
-        public CategoryWindow()
+        public SettingsWindow()
         {
             InitializeComponent();
         }

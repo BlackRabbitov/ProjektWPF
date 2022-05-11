@@ -90,5 +90,11 @@ namespace ProjektWPF
             categoryWindow.CategoryName.Text = "Test category name";
             categoryWindow.Show();
         }
+
+        private void Settings_Button_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.Show();
+        }
     }
 }
