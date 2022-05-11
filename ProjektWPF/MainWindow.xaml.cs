@@ -78,6 +78,17 @@ namespace ProjektWPF
                 m_notifyIcon.Visible = show;
         }
 
+        private void AddCategory_Button_Click(object sender, RoutedEventArgs e)
+        {
+            CategoryWindow categoryWindow = new CategoryWindow();
+            categoryWindow.Show();
+        }
 
+        private void EditCategory_Button_Click(object sender, RoutedEventArgs e)
+        {
+            CategoryWindow categoryWindow = new CategoryWindow();
+            categoryWindow.CategoryName.Text = "Test category name";
+            categoryWindow.Show();
+        }
     }
 }

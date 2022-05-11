@@ -152,19 +152,19 @@
                 <ListBox  Margin="20,0,20,0" Grid.Row="1" Grid.ColumnSpan="4" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
                 </ListBox>
                 
-                <Button Height="30" Grid.Row="2" FontSize="16" Margin="20,0,0,20" >
+                <Button Name="DeleteCategory_Button" Height="30" Grid.Row="2" FontSize="16" Margin="20,0,0,20" >
                     <DockPanel LastChildFill="True">
                         <Image DockPanel.Dock="Left" Source="/Source/icons8-delete-64.png" Width="32"/>
                     </DockPanel>
                 </Button>
                 
-                <Button Height="30" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" FontSize="16" Margin="0,0,0,20" >
+                <Button Name="AddCategory_Button" Height="30" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" FontSize="16" Margin="0,0,0,20" Click="AddCategory_Button_Click">
                     <DockPanel LastChildFill="True">
                         <Image DockPanel.Dock="Left" Source="/Source/icons8-add-64.png" Width="50"/>
                     </DockPanel>
                 </Button>
                 
-                <Button Height="30" Grid.Row="2" Grid.Column="3" FontSize="16" Margin="0,0,20,20" >
+                <Button Name="EditCategory_Button" Height="30" Grid.Row="2" Grid.Column="3" FontSize="16" Margin="0,0,20,20" Click="EditCategory_Button_Click">
                     <DockPanel LastChildFill="True">
                         <Image DockPanel.Dock="Left" Source="/Source/icons8-edit-64.png" Width="50"/>
                     </DockPanel>
