@@ -94,5 +94,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\icons8-search-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\icons8-add-64.png" />
+    <Resource Include="Source\icons8-delete-64.png" />
+    <Resource Include="Source\icons8-edit-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\examp_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

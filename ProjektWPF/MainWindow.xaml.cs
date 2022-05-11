@@ -24,5 +24,11 @@ namespace ProjektWPF
         {
             InitializeComponent();
         }
+        private void window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.MinHeight = this.ActualHeight;
+            this.MinWidth = this.ActualWidth;
+            this.MaxWidth = this.ActualWidth;
+        }
     }
 }
