@@ -8,6 +8,9 @@
         ResizeMode="CanResize"
         FontSize="14"
         Loaded="window_Loaded"
+        Closing="Window_Closing"
+        StateChanged="Window_StateChanged"
+        IsVisibleChanged="Window_IsVisibleChanged"
         Background="#363636"
         Title="ToDoer" Height="600" Width="650">
     <Window.Resources>
