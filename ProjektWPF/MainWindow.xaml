@@ -108,7 +108,6 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Image DockPanel.Dock="Left" Source="/Source/logo.png" Width="250"/>
-
             <Button Height="30" Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" Margin="40,15,40,7">
                 <DockPanel LastChildFill="True">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Import"></TextBlock>
