@@ -104,7 +104,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Image DockPanel.Dock="Left" Source="/Source/examp_logo.png" Width="250"/>
+            <Image DockPanel.Dock="Left" Source="/Source/logo.png" Width="250"/>
 
             <Button Height="30" Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" Margin="40,15,40,7">
                 <DockPanel LastChildFill="True">
@@ -146,7 +146,7 @@
                     </DockPanel>
                 </Button>
 
-                <ListBox Margin="20,0,20,0" Grid.Row="1" Grid.ColumnSpan="4" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#F2F2F2">
+                <ListBox  Margin="20,0,20,0" Grid.Row="1" Grid.ColumnSpan="4" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
                 </ListBox>
                 
                 <Button Height="30" Grid.Row="2" FontSize="16" Margin="20,0,0,20" >
@@ -215,10 +215,21 @@
                 </Button>
             </Grid>
 
-            <TextBox Name="search" Height="30" Margin="7,7,15,7" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Padding="4,4,25,4" FontSize="14" Background="#F2F2F2"></TextBox>
-            <Image Grid.Column="1" Height="20" Margin="5,7,18,7" Grid.Row="1" Source="/Source/icons8-search-64.png" >
+            <TextBox Name="search" Height="30" Margin="7,7,15,7" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Padding="4,4,30,4" FontSize="14" Background="#dcdcdc">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <Image Grid.Column="1" Height="20" Margin="5,7,22,7" Grid.Row="1" Source="/Source/icons8-search-64.png" >
             </Image>
-            <ListBox Grid.Row="2" Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="7,7,15,20" Background="#F2F2F2">
+            <ListBox Grid.Row="2" Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="7,7,15,20" Background="#dcdcdc">
+                <ListBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </ListBox.Resources>
             </ListBox>
         </Grid>
     </Grid>
