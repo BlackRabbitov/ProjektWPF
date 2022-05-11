@@ -198,22 +198,22 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="6" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Name="AddTask_Button" Grid.Column="6" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
                     <Image Source="Source/icons8-add-64.png"></Image>
                 </Button>
-                <Button Grid.Column="5" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Name="DeleteTask_Button" Grid.Column="5" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
                     <Image Source="Source/icons8-delete-64.png" Margin="3"></Image>
                 </Button>
-                <Button Grid.Column="4" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Name="EditTask_Button" Grid.Column="4" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
                     <Image Source="Source/icons8-edit-64.png" Margin="5"></Image>
                 </Button>
-                <Button Grid.Column="2" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Name="OrderByCreationDate_Button" Grid.Column="2" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
                     <Image Source="Source/icons8-sort-by-creation-date-48.png" Margin="5"></Image>
                 </Button>
-                <Button Grid.Column="1" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Name="OrderByImportance_Button" Grid.Column="1" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
                     <Image Source="Source/icons8-box-important-50.png" Margin="2"></Image>
                 </Button>
-                <Button Grid.Column="0" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Name="OrderByDate_Button" Grid.Column="0" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
                     <Image Source="Source/icons8-calendar-50.png" Margin="5"></Image>
                 </Button>
             </Grid>
