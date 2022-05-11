@@ -105,5 +105,14 @@
   <ItemGroup>
     <Resource Include="Source\examp_logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\icons8-calendar-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\icons8-box-important-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\icons8-sort-by-creation-date-48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
