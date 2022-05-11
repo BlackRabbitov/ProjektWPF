@@ -198,7 +198,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Name="AddTask_Button" Grid.Column="6" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Click="AddTask_Button_Click" Name="AddTask_Button" Grid.Column="6" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
                     <Image Source="Source/icons8-add-64.png"></Image>
                 </Button>
                 <Button Name="DeleteTask_Button" Grid.Column="5" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
