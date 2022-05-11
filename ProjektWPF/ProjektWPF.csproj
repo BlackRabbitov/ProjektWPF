@@ -117,6 +117,7 @@
     <Resource Include="Source\icons8-sort-by-creation-date-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Source\logo.png" />
     <Resource Include="Source\iconfinder-ring-4341316_120544.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
