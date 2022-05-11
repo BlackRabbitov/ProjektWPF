@@ -26,9 +26,9 @@ namespace ProjektWPF
         {
             InitializeComponent();
             m_notifyIcon = new System.Windows.Forms.NotifyIcon();
-            m_notifyIcon.BalloonTipText = "The app has been minimised. Click the tray icon to show.";
-            m_notifyIcon.BalloonTipTitle = "The App";
-            m_notifyIcon.Text = "The App";
+            m_notifyIcon.BalloonTipText = "ToDoer has been minimised. Click the tray icon to show.";
+            m_notifyIcon.BalloonTipTitle = "ToDoer";
+            m_notifyIcon.Text = "ToDoer";
             m_notifyIcon.Icon = new System.Drawing.Icon("../../Source/iconfinder-ring-4341316_120544.ico");
             m_notifyIcon.Click += new EventHandler(m_notifyIcon_Click);
         }
