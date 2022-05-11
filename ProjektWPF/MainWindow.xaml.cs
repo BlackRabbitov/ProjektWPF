@@ -96,5 +96,11 @@ namespace ProjektWPF
             SettingsWindow settingsWindow = new SettingsWindow();
             settingsWindow.Show();
         }
+
+        private void AddTask_Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddTask addTask = new AddTask();
+            addTask.ShowDialog();
+        }
     }
 }
