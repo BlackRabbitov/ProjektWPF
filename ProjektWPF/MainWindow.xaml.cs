@@ -177,6 +177,8 @@ namespace ProjektWPF
             if (addTask.ShowDialog() == true)
             {
                 tasks.Add(addTask.task);
+                categories.Find(x => x.Name == addTask.task._Category.Name).Tasks.Add(addTask.task);
+                Tasks_ListBox.Items.Refresh();
             }
         }
 
