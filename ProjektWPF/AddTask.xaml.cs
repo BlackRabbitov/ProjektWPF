@@ -30,7 +30,7 @@ namespace ProjektWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            DialogResult = false;
         }
 
         private void check_Checked(object sender, RoutedEventArgs e)
