@@ -20,17 +20,16 @@
                     <ControlTemplate TargetType="{x:Type Control}">
                         <Grid Margin="8">
                             <Ellipse
-                    Name="r1"
-                    Stroke="Black"
-                    StrokeDashArray="2 2"
-                    StrokeThickness="1"/>
+                                Name="r1"
+                                Stroke="Black"
+                                StrokeDashArray="2 2"
+                                StrokeThickness="1"/>
                             <Border
-                    Name="border"
-                    Width="{TemplateBinding ActualWidth}"
-                    Height="{TemplateBinding ActualHeight}"
-                    BorderThickness="1"
-                    CornerRadius="2"/>
-
+                                Name="border"
+                                Width="{TemplateBinding ActualWidth}"
+                                Height="{TemplateBinding ActualHeight}"
+                                BorderThickness="1"
+                                CornerRadius="2"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
