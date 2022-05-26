@@ -27,5 +27,22 @@ namespace ProjektWPF.Models
             Name = name;
             Importance = importance;
         }
+
+        public Task(string name, int importance, DateTime startDate, DateTime endDate)
+        {
+            IsDone = false;
+            Name = name;
+            Importance = importance;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
+
+        public Task(string name, int importance, DateTime startDate)
+        {
+            IsDone = false;
+            Name = name;
+            Importance = importance;
+            StartDate = startDate;
+        }
     }
 }

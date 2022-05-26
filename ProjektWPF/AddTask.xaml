@@ -9,12 +9,17 @@
         FontSize="14"
         Background="#363636"
         Title="AddTask" Height="350" Width="450">
+
+
+
+
     <Grid Margin="4">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -26,7 +31,7 @@
         <TextBox Name="name" Grid.Column="1" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"></TextBox>
 
         <TextBlock Foreground="White" Margin="4" Grid.Row="1">Importance :</TextBlock>
-        <Slider Name="importance" Margin="10,3,3,3" Grid.Row="1" Grid.Column="1" Maximum="4" TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center" TickPlacement="BottomRight" ></Slider>
+        <Slider Name="importance" Margin="10,3,3,3" Grid.Row="1" Grid.Column="1" Maximum="4" TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center" TickPlacement="BottomRight" ValueChanged="importance_ValueChanged"></Slider>
 
         <TextBlock Foreground="White" Margin="4" Grid.Row="2">Category :</TextBlock>
         <ComboBox Name="category" Grid.Row="2" Grid.Column="1" Margin="10,4,4,4" Background="#dcdcdc">
@@ -34,36 +39,28 @@
             <ComboBoxItem IsSelected="True">ComboBox Item #2</ComboBoxItem>
             <ComboBoxItem>ComboBox Item #3</ComboBoxItem>
         </ComboBox>
+        <CheckBox Grid.Row="3" Margin="5" Name="check" Foreground="White" Checked="check_Checked" >Date</CheckBox>
+        <Grid Grid.Row="4" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="66"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <GroupBox Grid.Row="3" Grid.ColumnSpan="2">
-            <GroupBox.Header>
-                <CheckBox Name="check" Foreground="White" >Date</CheckBox>
-            </GroupBox.Header>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Foreground="White" Margin="4,4,4,4">Start date:</TextBlock>
-                <TextBox Grid.Column="1" Margin="20,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
-                <TextBlock Foreground="White" Margin="4" Grid.Column="2">End date:</TextBlock>
-                <TextBox Grid.Column="3" Margin="20,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
-            </Grid>
-        </GroupBox>
-        <TextBlock Foreground="White" Margin="4" Grid.Row="4">Subtasks :</TextBlock>
-        <ListBox  Margin="4" Grid.Column="1" Grid.Row="4" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
+            <TextBlock Foreground="White" Margin="4,4,4,4" Grid.ColumnSpan="2" VerticalAlignment="Center">Start date:</TextBlock>
+            <DatePicker Name="sdate"  Grid.Column="2" Margin="20,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" IsEnabled="False"></DatePicker>
+            <TextBlock Foreground="White" Margin="4,4,3.55,4" Grid.Column="3" VerticalAlignment="Center">End date:</TextBlock>
+            <DatePicker Name="edate" Grid.Column="4" Margin="20.45,4,3.55,4" VerticalAlignment="Center" Background="#dcdcdc"  IsEnabled="False"></DatePicker>
+        </Grid>
+        <TextBlock Foreground="White" Margin="4" Grid.Row="5">Subtasks :</TextBlock>
+        <ListBox  Margin="4" Grid.Column="1" Grid.Row="5" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
         </ListBox>
 
-        <WrapPanel HorizontalAlignment="Right" Grid.Row="5" Grid.Column="1" Margin="3">
-            <Button Margin="3" Padding="20,4">Add</Button>
+        <WrapPanel HorizontalAlignment="Right" Grid.Row="6" Grid.Column="1" Margin="3">
+            <Button Margin="3" Padding="20,4" Click="Button_Click_1">Add</Button>
             <Button Margin="3" Padding="25,4" Click="Button_Click">Cancel</Button>
         </WrapPanel>
-
-
-
-
     </Grid>
 </Window>
