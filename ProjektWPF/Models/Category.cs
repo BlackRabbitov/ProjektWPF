@@ -9,7 +9,7 @@ namespace ProjektWPF.Models
     public class Category
     {
         public string Name { get; set; }
-
+        public List<Task> Tasks { get; set; }
         public Category(string name)
         {
             Name = name;

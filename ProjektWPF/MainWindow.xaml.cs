@@ -1,8 +1,10 @@
 ﻿using ProjektWPF.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace ProjektWPF
 {
@@ -37,8 +40,11 @@ namespace ProjektWPF
             m_notifyIcon.Icon = new System.Drawing.Icon("../../Source/iconfinder-ring-4341316_120544.ico");
             m_notifyIcon.Click += new EventHandler(m_notifyIcon_Click);
 
-            tasks = new List<ProjektWPF.Models.Task>();
+            tasks = new List<Models.Task>();
             categories = new List<Category>();
+            string fileName = "../../Data/ToDo.json";
+            string jsonString = File.ReadAllText(fileName);
+            categories = JsonSerializer.Deserialize<List<Category>>(jsonString);
         }
         private void window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -49,6 +55,10 @@ namespace ProjektWPF
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            string fileName = "../../Data/ToDo.json";
+            string jsonString = JsonSerializer.Serialize(categories);
+            File.WriteAllText(fileName, jsonString);
+
             m_notifyIcon.Dispose();
             m_notifyIcon = null;
         }
