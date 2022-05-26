@@ -34,6 +34,7 @@ namespace ProjektWPF
         {
             InitializeComponent();
             Init_ByTimeCategories();
+            tasks = GetAllTasks();
 
             m_notifyIcon = new System.Windows.Forms.NotifyIcon();
             m_notifyIcon.BalloonTipText = "ToDoer has been minimised. Click the tray icon to show.";
@@ -44,10 +45,13 @@ namespace ProjektWPF
 
             tasks = new List<Models.Task>();
             categories = new List<Category>();
+
             string fileName = "../../Data/ToDo.json";
             string jsonString = File.ReadAllText(fileName);
             categories = JsonSerializer.Deserialize<List<Category>>(jsonString);
+
             Category_ListBox.DataContext = categories;
+            Tasks_ListBox.DataContext = tasks;
         }
         private void window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -196,6 +200,31 @@ namespace ProjektWPF
             timeCategories.Add(new Category("In week"));
             timeCategories.Add(new Category("Tomorrow"));
             timeCategories.Add(new Category("Today"));
+        }
+
+        public List<Models.Task> GetAllTasks()
+        {
+            List<Models.Task> tasks = new List<Models.Task>();
+            
+            if(categories != null)
+            {
+                foreach (Category category in categories)
+                {
+                    foreach (Models.Task task in category.Tasks)
+                    {
+                        tasks.Add(task);
+                    }
+                }
+            }
+
+            return tasks;
+        }
+
+        private void Category_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Category category = Category_ListBox.SelectedItem as Category;
+            Tasks_ListBox.ItemsSource = category.Tasks;
+            Tasks_ListBox.Items.Refresh();
         }
     }
 }
