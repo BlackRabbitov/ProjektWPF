@@ -173,7 +173,6 @@ namespace ProjektWPF
         private void AddTask_Button_Click(object sender, RoutedEventArgs e)
         {
             AddTask addTask = new AddTask(categories);
-            addTask.ShowDialog();
 
             if (addTask.ShowDialog() == true)
             {
