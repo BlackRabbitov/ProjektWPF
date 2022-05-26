@@ -69,6 +69,9 @@
     </ApplicationDefinition>
     <Page Include="AddTask.xaml">
     </Page>
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\SubTask.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -150,5 +153,6 @@
     <Resource Include="Source\logo.png" />
     <Resource Include="Source\iconfinder-ring-4341316_120544.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

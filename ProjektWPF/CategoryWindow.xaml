@@ -17,13 +17,8 @@
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        
-        <TextBox Name="CategoryName" Height="50" Margin="7,7,15,7" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="14" Background="#dcdcdc">
-            <TextBox.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </TextBox.Resources>
+
+        <TextBox Name="CategoryName" Height="50" Margin="7,7,15,7" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14" VerticalAlignment="Center" Background="#dcdcdc" TextWrapping="Wrap" AcceptsReturn="True">
         </TextBox>
         <Label Content="Name" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="WhiteSmoke"></Label>
         <Button Name="Accept_Button" Height="30" Grid.Row="1" Grid.Column="1" FontSize="16" Margin="5" Click="Accept_Button_Click">
