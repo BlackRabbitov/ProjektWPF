@@ -272,8 +272,11 @@ namespace ProjektWPF
                 {
                     selectedTask.Name = taskWindow.name.Text;
                     selectedTask.Importance = (int)taskWindow.importance.Value;
-                    selectedTask.StartDate = taskWindow.sdate.SelectedDate.Value;
-                    selectedTask.EndDate = taskWindow.edate.SelectedDate.Value;
+                    if (taskWindow.check.IsChecked != false)
+                    {
+                        selectedTask.StartDate = taskWindow.sdate.SelectedDate.Value;
+                        selectedTask.EndDate = taskWindow.edate.SelectedDate.Value;
+                    }
                     selectedTask._Category = taskWindow.category.SelectedItem as Category;
                     Tasks_ListBox.Items.Refresh();
                 }
