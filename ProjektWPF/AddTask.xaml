@@ -61,7 +61,8 @@
         </ListBox>
 
         <WrapPanel HorizontalAlignment="Right" Grid.Row="6" Grid.Column="1" Margin="3">
-            <Button Margin="3" Padding="20,4" Click="Button_Click_1">Add</Button>
+            <Button Margin="3" Padding="20,4" Click="Button_Click_1">Add Subtask</Button>
+            <Button Name="add" Margin="3" Padding="20,4" Click="Button_Click_1">Add</Button>
             <Button Margin="3" Padding="25,4" Click="Button_Click">Cancel</Button>
         </WrapPanel>
     </Grid>
