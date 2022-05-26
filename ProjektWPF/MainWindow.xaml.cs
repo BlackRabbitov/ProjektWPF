@@ -28,6 +28,8 @@ namespace ProjektWPF
         public List<Category> categories;
         public List<Category> timeCategories;
 
+        public bool shouldMinimalize = true;
+
         private System.Windows.Forms.NotifyIcon m_notifyIcon;
         private WindowState m_storedWindowState = WindowState.Normal;
         public MainWindow()
@@ -53,6 +55,8 @@ namespace ProjektWPF
             Category_ListBox.DataContext = categories;
             Tasks_ListBox.DataContext = tasks;
         }
+
+        // Should work in background when minimalized
         private void window_Loaded(object sender, RoutedEventArgs e)
         {
             this.MinHeight = this.ActualHeight;
@@ -72,14 +76,17 @@ namespace ProjektWPF
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
-            if (WindowState == WindowState.Minimized)
+            if(shouldMinimalize == true)
             {
-                Hide();
-                if (m_notifyIcon != null)
-                    m_notifyIcon.ShowBalloonTip(2000);
+                if (WindowState == WindowState.Minimized)
+                {
+                    Hide();
+                    if (m_notifyIcon != null)
+                        m_notifyIcon.ShowBalloonTip(2000);
+                }
+                else
+                    m_storedWindowState = WindowState;
             }
-            else
-                m_storedWindowState = WindowState;
         }
 
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -102,6 +109,8 @@ namespace ProjektWPF
             if (m_notifyIcon != null)
                 m_notifyIcon.Visible = show;
         }
+
+        // -- Should work in background when minimalized
 
         // Categories
 
@@ -162,12 +171,17 @@ namespace ProjektWPF
             EditCategory_Button.IsEnabled = false;
         }
 
-        // Categories
+        // -- Categories
 
         private void Settings_Button_Click(object sender, RoutedEventArgs e)
         {
             SettingsWindow settingsWindow = new SettingsWindow();
-            settingsWindow.Show();
+            settingsWindow.ShouldMinimalize_CheckBox.IsChecked = shouldMinimalize;
+            
+            if(settingsWindow.ShowDialog() == true)
+            {
+                shouldMinimalize = settingsWindow.ShouldMinimalize_CheckBox.IsChecked.Value;
+            }
         }
 
         private void AddTask_Button_Click(object sender, RoutedEventArgs e)

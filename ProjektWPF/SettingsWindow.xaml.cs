@@ -26,12 +26,30 @@ namespace ProjektWPF
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            DialogResult = false;
         }
 
         private void Accept_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            DialogResult = true;
+        }
+
+        private void Settings_Listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if((Settings_Listbox.SelectedItem as ListBoxItem).Name == "General_Settings_Button")
+            {
+                Display_Layout_Settings_StackPanel.Visibility = Visibility.Hidden;
+                Display_Layout_Settings_StackPanel.IsEnabled = false;
+                Display_General_Settings_StackPanel.Visibility = Visibility.Visible;
+                Display_General_Settings_StackPanel.IsEnabled = true;
+            } 
+            else if ((Settings_Listbox.SelectedItem as ListBoxItem).Name == "Layout_Settings_Button")
+            {
+                Display_Layout_Settings_StackPanel.Visibility = Visibility.Visible;
+                Display_Layout_Settings_StackPanel.IsEnabled = true;
+                Display_General_Settings_StackPanel.Visibility = Visibility.Hidden;
+                Display_General_Settings_StackPanel.IsEnabled = false;
+            }
         }
     }
 }

@@ -16,23 +16,26 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox  Margin="10,20,10,10" Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#333333" BorderBrush="#454545">
-            <ListBoxItem HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Center">
+        <ListBox Name="Settings_Listbox" Margin="10,20,10,10" Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#333333" BorderBrush="#454545" SelectionMode="Single" SelectionChanged="Settings_Listbox_SelectionChanged">
+            <ListBoxItem x:Name="General_Settings_Button" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Center">
                 <Label Content="General" FontSize="16" Background="#00000000" BorderBrush="#00000000" Foreground="WhiteSmoke" ></Label>
             </ListBoxItem>
-            <ListBoxItem HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Center">
+            <ListBoxItem x:Name="Layout_Settings_Button" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Center">
                 <Label Content="Layout" FontSize="16" Background="#00000000" BorderBrush="#00000000" Foreground="WhiteSmoke"></Label>
             </ListBoxItem>
         </ListBox>
-        <StackPanel  Margin="10,20,10,10" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#333333">
+        <StackPanel x:Name="Display_General_Settings_StackPanel" Margin="10,20,10,10" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#333333" Visibility="Visible" IsEnabled="True">
             <DockPanel Margin="10, 3, 0 ,0"  LastChildFill="True" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Label DockPanel.Dock="Left" FontSize="15" Content="Minimize to tray when closing" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="WhiteSmoke"></Label>
-                <CheckBox DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10, 0, 10, 0"></CheckBox>
+                <CheckBox Name="ShouldMinimalize_CheckBox" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10, 0, 10, 0"></CheckBox>
             </DockPanel>
             <DockPanel  Margin="10, 3, 0 ,0" LastChildFill="True" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Label DockPanel.Dock="Left" FontSize="15" Content="Start on startup" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="WhiteSmoke"></Label>
                 <CheckBox DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10, 0, 10, 0"></CheckBox>
             </DockPanel>
+        </StackPanel>
+        <StackPanel x:Name="Display_Layout_Settings_StackPanel" Margin="10,20,10,10" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#333333" Visibility="Hidden" IsEnabled="False">
+            <Label Content="FEATURE IN PROGRESS" Foreground="WhiteSmoke"></Label>
         </StackPanel>
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
