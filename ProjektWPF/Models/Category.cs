@@ -13,6 +13,7 @@ namespace ProjektWPF.Models
         public Category(string name)
         {
             Name = name;
+            Tasks = new List<Task>();
         }
 
     }
