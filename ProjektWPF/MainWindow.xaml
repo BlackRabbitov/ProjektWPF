@@ -143,21 +143,21 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Button Height="30" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="20, 15, 0, 0" FontSize="16" VerticalAlignment="Bottom">
+                <Button x:Name="CategoriesTab_Button" Height="30" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="20, 15, 0, 0" FontSize="16" VerticalAlignment="Bottom" Click="CategoriesTab_Button_Click">
                     <DockPanel LastChildFill="True">
                         <TextBlock Text="Categories"></TextBlock>
                     </DockPanel>
                 </Button>
-                <Button Height="30" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 0, 20, 0" FontSize="16" VerticalAlignment="Bottom">
+                <Button x:Name="ByTimeCategories_Button" Height="30" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 0, 20, 0" FontSize="16" VerticalAlignment="Bottom" Click="ByTimeCategories_Button_Click">
                     <DockPanel LastChildFill="True">
                         <TextBlock Text="By time"></TextBlock>
                     </DockPanel>
                 </Button>
 
-                <ListBox  Margin="20,0,20,0" Grid.Row="1" Grid.ColumnSpan="4" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
+                <ListBox Name="Category_ListBox" ItemsSource="{Binding}" SelectionMode="Single" DisplayMemberPath="Name" Margin="20,0,20,0" Grid.Row="1" Grid.ColumnSpan="4" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
                 </ListBox>
 
-                <Button Name="DeleteCategory_Button" Height="30" Grid.Row="2" FontSize="16" Margin="20,0,0,20" >
+                <Button Name="DeleteCategory_Button" Height="30" Grid.Row="2" FontSize="16" Margin="20,0,0,20" Click="DeleteCategory_Button_Click">
                     <DockPanel LastChildFill="True">
                         <Image DockPanel.Dock="Left" Source="/Source/icons8-delete-64.png" Width="32"/>
                     </DockPanel>
