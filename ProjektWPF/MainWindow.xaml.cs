@@ -39,6 +39,7 @@ namespace ProjektWPF
 
             tasks = new List<ProjektWPF.Models.Task>();
             categories = new List<Category>();
+            Category_ListBox.DataContext = categories;
         }
         private void window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -89,14 +90,28 @@ namespace ProjektWPF
         private void AddCategory_Button_Click(object sender, RoutedEventArgs e)
         {
             CategoryWindow categoryWindow = new CategoryWindow();
-            categoryWindow.Show();
+
+            if(categoryWindow.ShowDialog() == true)
+            {
+                categories.Add(new Category(categoryWindow.Name));
+                Category_ListBox.Items.Refresh();
+            }
         }
 
         private void EditCategory_Button_Click(object sender, RoutedEventArgs e)
         {
-            CategoryWindow categoryWindow = new CategoryWindow();
-            categoryWindow.CategoryName.Text = "Test category name";
-            categoryWindow.Show();
+            Category categorySelected = Category_ListBox.SelectedItem as Category;
+            if (categorySelected != null)
+            {
+                CategoryWindow categoryWindow = new CategoryWindow();
+                categoryWindow.Name = categorySelected.Name;
+
+                if (categoryWindow.ShowDialog() == true)
+                {
+                    categorySelected.Name = categoryWindow.Name;
+                    Category_ListBox.Items.Refresh();
+                }
+            }
         }
 
         private void Settings_Button_Click(object sender, RoutedEventArgs e)

@@ -26,12 +26,12 @@ namespace ProjektWPF
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            DialogResult = false;
         }
 
         private void Accept_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            DialogResult = true;
         }
     }
 }
