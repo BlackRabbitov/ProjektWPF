@@ -245,5 +245,49 @@ namespace ProjektWPF
                 Tasks_ListBox.Items.Refresh();
             }
         }
+
+        private void EditTask_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Models.Task selectedTask = Tasks_ListBox.SelectedItem as Models.Task;
+
+            if (selectedTask != null)
+            {
+                AddTask taskWindow = new AddTask(categories);
+                taskWindow.name.Text = selectedTask.Name;
+                taskWindow.importance.Value = selectedTask.Importance;
+                if (selectedTask.StartDate != new DateTime())
+                {
+                    taskWindow.check.IsChecked = true;
+                    taskWindow.sdate.SelectedDate = selectedTask.StartDate;
+                    taskWindow.edate.SelectedDate = selectedTask.EndDate;
+                }else
+                {
+                    taskWindow.check.IsChecked = false;
+                }
+
+                taskWindow.category.SelectedItem = selectedTask._Category;
+                taskWindow.add.Content = "Modify";
+
+                if (taskWindow.ShowDialog() == true)
+                {
+                    selectedTask.Name = taskWindow.name.Text;
+                    selectedTask.Importance = (int)taskWindow.importance.Value;
+                    selectedTask.StartDate = taskWindow.sdate.SelectedDate.Value;
+                    selectedTask.EndDate = taskWindow.edate.SelectedDate.Value;
+                    selectedTask._Category = taskWindow.category.SelectedItem as Category;
+                    Tasks_ListBox.Items.Refresh();
+                }
+            }
+        }
+
+        private void DeleteTask_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Models.Task taskSelected = Tasks_ListBox.SelectedItem as Models.Task;
+            if (taskSelected != null)
+            {
+                tasks.Remove(tasks.Find(x => x.Name == taskSelected.Name));
+                Tasks_ListBox.Items.Refresh();
+            }
+        }
     }
 }
