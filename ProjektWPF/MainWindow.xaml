@@ -88,7 +88,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
     </Window.Resources>
+    
+    
+    
+    
+    
+    
     <Grid Margin="7">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -98,9 +105,9 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="-7, -7, -7, 3">
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="Options">
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="-7, -7, -7, 15" >
+            <Menu DockPanel.Dock="Top" Background="#dcdcdc">
+                <MenuItem Header="Options" >
                     <MenuItem Name="Import_Button" Header="Import" Click="Import_Button_Click"></MenuItem>
                     <MenuItem Name="Export_Button" Click="Export_Button_Click" Header="Export"></MenuItem>
                     <MenuItem Name="Settings_Button" Header="Settings" Click="Settings_Button_Click"></MenuItem>
@@ -136,7 +143,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Button Height="30" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="20, 0, 0, 0" FontSize="16" VerticalAlignment="Bottom">
+                <Button Height="30" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="20, 15, 0, 0" FontSize="16" VerticalAlignment="Bottom">
                     <DockPanel LastChildFill="True">
                         <TextBlock Text="Categories"></TextBlock>
                     </DockPanel>
