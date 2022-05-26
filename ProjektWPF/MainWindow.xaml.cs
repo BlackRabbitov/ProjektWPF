@@ -42,10 +42,10 @@ namespace ProjektWPF
 
             tasks = new List<Models.Task>();
             categories = new List<Category>();
-            Category_ListBox.DataContext = categories;
             string fileName = "../../Data/ToDo.json";
             string jsonString = File.ReadAllText(fileName);
             categories = JsonSerializer.Deserialize<List<Category>>(jsonString);
+            Category_ListBox.DataContext = categories;
         }
         private void window_Loaded(object sender, RoutedEventArgs e)
         {
