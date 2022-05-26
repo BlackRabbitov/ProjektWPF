@@ -218,8 +218,12 @@ namespace ProjektWPF
         private void Category_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Category category = Category_ListBox.SelectedItem as Category;
-            Tasks_ListBox.ItemsSource = category.Tasks;
-            Tasks_ListBox.Items.Refresh();
+
+            if(category != null)
+            {
+                Tasks_ListBox.ItemsSource = category.Tasks;
+                Tasks_ListBox.Items.Refresh();
+            }
         }
     }
 }
