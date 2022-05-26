@@ -1,14 +1,7 @@
 [
   {
     "Name": "C1",
-    "Tasks": [
-      {
-        "Name": "Task1",
-        "Importance": 1,
-        "StartDate": "0001-01-01T00:00:00",
-        "EndDate": "0001-01-01T00:00:00"
-      }
-    ]
+    "Tasks": null
   },
   {
     "Name": "C2",
@@ -16,6 +9,10 @@
   },
   {
     "Name": "asdf",
+    "Tasks": null
+  },
+  {
+    "Name": "sadffds",
     "Tasks": null
   }
 ]
