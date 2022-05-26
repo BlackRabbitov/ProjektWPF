@@ -28,5 +28,7 @@ namespace ProjektWPF
         {
             this.Close();
         }
+
+
     }
 }

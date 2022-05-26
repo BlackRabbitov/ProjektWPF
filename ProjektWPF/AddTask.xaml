@@ -23,13 +23,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Foreground="White" Margin="4">Name :</TextBlock>
-        <TextBox Grid.Column="1" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"></TextBox>
+        <TextBox Name="name" Grid.Column="1" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextChanged="TextBox_TextChanged"></TextBox>
 
         <TextBlock Foreground="White" Margin="4" Grid.Row="1">Importance :</TextBlock>
-        <Slider Margin="10,3,3,3" Grid.Row="1" Grid.Column="1" Maximum="4" TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center" TickPlacement="BottomRight" ></Slider>
+        <Slider Name="importance" Margin="10,3,3,3" Grid.Row="1" Grid.Column="1" Maximum="4" TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center" TickPlacement="BottomRight" ></Slider>
 
         <TextBlock Foreground="White" Margin="4" Grid.Row="2">Category :</TextBlock>
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="10,4,4,4" Background="#dcdcdc">
+        <ComboBox Name="category" Grid.Row="2" Grid.Column="1" Margin="10,4,4,4" Background="#dcdcdc">
             <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
             <ComboBoxItem IsSelected="True">ComboBox Item #2</ComboBoxItem>
             <ComboBoxItem>ComboBox Item #3</ComboBoxItem>

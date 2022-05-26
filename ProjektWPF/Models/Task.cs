@@ -17,7 +17,7 @@ namespace ProjektWPF.Models
 
         public List<SubTask> SubTasks;
 
-        public List<Category> Categories;
+        public Category _Category;
 
         public bool IsDone;
 
