@@ -42,6 +42,7 @@ namespace ProjektWPF
 
             tasks = new List<Models.Task>();
             categories = new List<Category>();
+            Category_ListBox.DataContext = categories;
             string fileName = "../../Data/ToDo.json";
             string jsonString = File.ReadAllText(fileName);
             categories = JsonSerializer.Deserialize<List<Category>>(jsonString);
@@ -99,14 +100,38 @@ namespace ProjektWPF
         private void AddCategory_Button_Click(object sender, RoutedEventArgs e)
         {
             CategoryWindow categoryWindow = new CategoryWindow();
-            categoryWindow.Show();
+
+            if(categoryWindow.ShowDialog() == true)
+            {
+                categories.Add(new Category(categoryWindow.CategoryName.Text));
+                Category_ListBox.Items.Refresh();
+            }
         }
 
         private void EditCategory_Button_Click(object sender, RoutedEventArgs e)
         {
-            CategoryWindow categoryWindow = new CategoryWindow();
-            categoryWindow.CategoryName.Text = "Test category name";
-            categoryWindow.Show();
+            Category categorySelected = Category_ListBox.SelectedItem as Category;
+            if (categorySelected != null)
+            {
+                CategoryWindow categoryWindow = new CategoryWindow();
+                categoryWindow.CategoryName.Text = categorySelected.Name;
+
+                if (categoryWindow.ShowDialog() == true)
+                {
+                    categorySelected.Name = categoryWindow.CategoryName.Text;
+                    Category_ListBox.Items.Refresh();
+                }
+            }
+        }
+
+        private void DeleteCategory_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Category categorySelected = Category_ListBox.SelectedItem as Category;
+            if(categorySelected != null)
+            {
+                categories.Remove(categories.Find(x => x.Name == categorySelected.Name));
+                Category_ListBox.Items.Refresh();
+            }
         }
 
         private void Settings_Button_Click(object sender, RoutedEventArgs e)
