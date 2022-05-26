@@ -102,5 +102,15 @@ namespace ProjektWPF
             AddTask addTask = new AddTask();
             addTask.ShowDialog();
         }
+
+        private void Export_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Import_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

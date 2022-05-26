@@ -90,11 +90,25 @@
         </Style>
     </Window.Resources>
     <Grid Margin="7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid >
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="-7, -7, -7, 3">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Options">
+                    <MenuItem Name="Import_Button" Header="Import" Click="Import_Button_Click"></MenuItem>
+                    <MenuItem Name="Export_Button" Click="Export_Button_Click" Header="Export"></MenuItem>
+                    <MenuItem Name="Settings_Button" Header="Settings" Click="Settings_Button_Click"></MenuItem>
+                    <MenuItem Name="Exit_Button" Header="Exit"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -108,22 +122,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Image DockPanel.Dock="Left" Source="/Source/logo.png" Width="250"/>
-            <Button Height="30" Grid.Row="1" Grid.ColumnSpan="3" FontSize="16" Margin="40,15,40,7">
-                <DockPanel LastChildFill="True">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Import"></TextBlock>
-                </DockPanel>
-            </Button>
-            <Button Height="30" Grid.Row="2" Grid.ColumnSpan="3" FontSize="16" Margin="40,7,40,7" >
-                <DockPanel LastChildFill="True">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Export" ></TextBlock>
-                </DockPanel>
-            </Button>
-            <Button Name="Settings_Button" Height="30" Grid.Row="3" Grid.ColumnSpan="3" FontSize="16" Margin="40,7,40,15" Click="Settings_Button_Click">
-                <DockPanel LastChildFill="True">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Settings" ></TextBlock>
-                </DockPanel>
-            </Button>
-
+            
             <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -150,19 +149,19 @@
 
                 <ListBox  Margin="20,0,20,0" Grid.Row="1" Grid.ColumnSpan="4" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
                 </ListBox>
-                
+
                 <Button Name="DeleteCategory_Button" Height="30" Grid.Row="2" FontSize="16" Margin="20,0,0,20" >
                     <DockPanel LastChildFill="True">
                         <Image DockPanel.Dock="Left" Source="/Source/icons8-delete-64.png" Width="32"/>
                     </DockPanel>
                 </Button>
-                
+
                 <Button Name="AddCategory_Button" Height="30" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" FontSize="16" Margin="0,0,0,20" Click="AddCategory_Button_Click">
                     <DockPanel LastChildFill="True">
                         <Image DockPanel.Dock="Left" Source="/Source/icons8-add-64.png" Width="50"/>
                     </DockPanel>
                 </Button>
-                
+
                 <Button Name="EditCategory_Button" Height="30" Grid.Row="2" Grid.Column="3" FontSize="16" Margin="0,0,20,20" Click="EditCategory_Button_Click">
                     <DockPanel LastChildFill="True">
                         <Image DockPanel.Dock="Left" Source="/Source/icons8-edit-64.png" Width="50"/>
@@ -172,9 +171,7 @@
             </Grid>
         </Grid>
 
-
-
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
