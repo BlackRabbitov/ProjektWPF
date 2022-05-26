@@ -20,15 +20,13 @@ namespace ProjektWPF
     /// </summary>
     public partial class AddTask : Window
     {
-        List<Category> categories = new List<Category>();
+        public Models.Task task;
+
         public AddTask(List<Category> categories)
         {
-            this.categories = categories;
             InitializeComponent();
+            category.DataContext = categories;
         }
-
-
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -44,7 +42,9 @@ namespace ProjektWPF
             } else
             {
                 sdate.IsEnabled = false;
+                sdate.SelectedDate = null;
                 edate.IsEnabled = false;
+                edate.SelectedDate = null;
             }
         }
 
@@ -75,22 +75,22 @@ namespace ProjektWPF
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            if (name != null)
+            if (name.Text != "" && category.SelectedItem != null)
             {
-                if (sdate != null && edate== null)
+                if (sdate.SelectedDate != null && edate.SelectedDate == null)
                 {
-                    Models.Task task = new Models.Task(name.Text, (int)importance.Value, sdate.SelectedDate.Value);
-                    this.Close();
+                    task = new Models.Task(name.Text, (int)importance.Value, sdate.SelectedDate.Value, category.SelectedItem as Category);
+                    DialogResult = true;
                 }
-                else if (sdate != null && edate != null)
+                else if (sdate.SelectedDate != null && edate.SelectedDate != null)
                 {
-                    Models.Task task = new Models.Task(name.Text, (int)importance.Value, sdate.SelectedDate.Value, edate.SelectedDate.Value);
-                    this.Close();
+                    task = new Models.Task(name.Text, (int)importance.Value, sdate.SelectedDate.Value, edate.SelectedDate.Value, category.SelectedItem as Category);
+                    DialogResult = true;
                 }
                 else
                 {
-                    Models.Task task = new Models.Task(name.Text, (int)importance.Value);
-                    this.Close();
+                    task = new Models.Task(name.Text, (int)importance.Value, category.SelectedItem as Category);
+                    DialogResult = true;
                 }
             } else
             {

@@ -21,28 +21,31 @@ namespace ProjektWPF.Models
 
         public bool IsDone;
 
-        public Task(string name, int importance)
+        public Task(string name, int importance, Category category)
         {
             IsDone = false;
             Name = name;
             Importance = importance;
+            _Category = category;
         }
 
-        public Task(string name, int importance, DateTime startDate, DateTime endDate)
+        public Task(string name, int importance, DateTime startDate, DateTime endDate, Category category)
         {
             IsDone = false;
             Name = name;
             Importance = importance;
             StartDate = startDate;
             EndDate = endDate;
+            _Category = category;
         }
 
-        public Task(string name, int importance, DateTime startDate)
+        public Task(string name, int importance, DateTime startDate, Category category)
         {
             IsDone = false;
             Name = name;
             Importance = importance;
             StartDate = startDate;
+            _Category = category;
         }
     }
 }
