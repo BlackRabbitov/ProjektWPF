@@ -51,10 +51,14 @@ namespace ProjektWPF
         private void importance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            if (importance.Value == 1)
+            if (importance.Value == 0)
             {
 
-            } else if (importance.Value == 2)
+            } else if (importance.Value == 1)
+            {
+
+            }
+            else if (importance.Value == 2)
             {
 
             }
@@ -63,10 +67,6 @@ namespace ProjektWPF
 
             }
             else if (importance.Value == 4)
-            {
-
-            }
-            else if (importance.Value == 5)
             {
 
             }
