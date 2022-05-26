@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjektWPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,17 +21,24 @@ namespace ProjektWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<ProjektWPF.Models.Task> tasks;
+        public List<Category> categories;
+
         private System.Windows.Forms.NotifyIcon m_notifyIcon;
         private WindowState m_storedWindowState = WindowState.Normal;
         public MainWindow()
         {
             InitializeComponent();
+
             m_notifyIcon = new System.Windows.Forms.NotifyIcon();
             m_notifyIcon.BalloonTipText = "ToDoer has been minimised. Click the tray icon to show.";
             m_notifyIcon.BalloonTipTitle = "ToDoer";
             m_notifyIcon.Text = "ToDoer";
             m_notifyIcon.Icon = new System.Drawing.Icon("../../Source/iconfinder-ring-4341316_120544.ico");
             m_notifyIcon.Click += new EventHandler(m_notifyIcon_Click);
+
+            tasks = new List<ProjektWPF.Models.Task>();
+            categories = new List<Category>();
         }
         private void window_Loaded(object sender, RoutedEventArgs e)
         {
