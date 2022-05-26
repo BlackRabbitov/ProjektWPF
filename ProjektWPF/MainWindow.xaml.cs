@@ -93,7 +93,7 @@ namespace ProjektWPF
 
             if(categoryWindow.ShowDialog() == true)
             {
-                categories.Add(new Category(categoryWindow.Name));
+                categories.Add(new Category(categoryWindow.CategoryName.Text));
                 Category_ListBox.Items.Refresh();
             }
         }
@@ -104,13 +104,23 @@ namespace ProjektWPF
             if (categorySelected != null)
             {
                 CategoryWindow categoryWindow = new CategoryWindow();
-                categoryWindow.Name = categorySelected.Name;
+                categoryWindow.CategoryName.Text = categorySelected.Name;
 
                 if (categoryWindow.ShowDialog() == true)
                 {
-                    categorySelected.Name = categoryWindow.Name;
+                    categorySelected.Name = categoryWindow.CategoryName.Text;
                     Category_ListBox.Items.Refresh();
                 }
+            }
+        }
+
+        private void DeleteCategory_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Category categorySelected = Category_ListBox.SelectedItem as Category;
+            if(categorySelected != null)
+            {
+                categories.Remove(categories.Find(x => x.Name == categorySelected.Name));
+                Category_ListBox.Items.Refresh();
             }
         }
 
