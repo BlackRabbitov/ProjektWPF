@@ -26,12 +26,14 @@ namespace ProjektWPF
     {
         public List<ProjektWPF.Models.Task> tasks;
         public List<Category> categories;
+        public List<Category> timeCategories;
 
         private System.Windows.Forms.NotifyIcon m_notifyIcon;
         private WindowState m_storedWindowState = WindowState.Normal;
         public MainWindow()
         {
             InitializeComponent();
+            Init_ByTimeCategories();
 
             m_notifyIcon = new System.Windows.Forms.NotifyIcon();
             m_notifyIcon.BalloonTipText = "ToDoer has been minimised. Click the tray icon to show.";
@@ -97,6 +99,8 @@ namespace ProjektWPF
                 m_notifyIcon.Visible = show;
         }
 
+        // Categories
+
         private void AddCategory_Button_Click(object sender, RoutedEventArgs e)
         {
             CategoryWindow categoryWindow = new CategoryWindow();
@@ -134,6 +138,28 @@ namespace ProjektWPF
             }
         }
 
+        private void CategoriesTab_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Category_ListBox.ItemsSource = categories;
+            Category_ListBox.Items.Refresh();
+
+            AddCategory_Button.IsEnabled = true;
+            DeleteCategory_Button.IsEnabled = true;
+            EditCategory_Button.IsEnabled = true;
+        }
+
+        private void ByTimeCategories_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Category_ListBox.ItemsSource = timeCategories;
+            Category_ListBox.Items.Refresh();
+
+            AddCategory_Button.IsEnabled = false;
+            DeleteCategory_Button.IsEnabled = false;
+            EditCategory_Button.IsEnabled = false;
+        }
+
+        // Categories
+
         private void Settings_Button_Click(object sender, RoutedEventArgs e)
         {
             SettingsWindow settingsWindow = new SettingsWindow();
@@ -154,6 +180,17 @@ namespace ProjektWPF
         private void Import_Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public void Init_ByTimeCategories()
+        {
+            timeCategories = new List<Category>();
+
+            timeCategories.Add(new Category("In year"));
+            timeCategories.Add(new Category("In month"));
+            timeCategories.Add(new Category("In week"));
+            timeCategories.Add(new Category("Tomorrow"));
+            timeCategories.Add(new Category("Today"));
         }
     }
 }

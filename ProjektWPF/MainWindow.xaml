@@ -143,12 +143,12 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Button Height="30" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="20, 15, 0, 0" FontSize="16" VerticalAlignment="Bottom">
+                <Button x:Name="CategoriesTab_Button" Height="30" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="20, 15, 0, 0" FontSize="16" VerticalAlignment="Bottom" Click="CategoriesTab_Button_Click">
                     <DockPanel LastChildFill="True">
                         <TextBlock Text="Categories"></TextBlock>
                     </DockPanel>
                 </Button>
-                <Button Height="30" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 0, 20, 0" FontSize="16" VerticalAlignment="Bottom">
+                <Button x:Name="ByTimeCategories_Button" Height="30" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 0, 20, 0" FontSize="16" VerticalAlignment="Bottom" Click="ByTimeCategories_Button_Click">
                     <DockPanel LastChildFill="True">
                         <TextBlock Text="By time"></TextBlock>
                     </DockPanel>
