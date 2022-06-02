@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ namespace ProjektWPF.Models
         public Category _Category;
 
         public bool IsDone;
+        public Task() { }
 
         public Task(string name, int importance, Category category)
         {
