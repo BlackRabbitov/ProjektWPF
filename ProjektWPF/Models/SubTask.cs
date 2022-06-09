@@ -10,9 +10,23 @@ namespace ProjektWPF.Models
     {
         public string Name { get; set; }
 
+        public DateTime StartDate { get; set; }
+
+        public DateTime EndDate { get; set; }
+
         public SubTask(string name)
         {
             Name = name;
+        }
+        public SubTask(string name, DateTime startDate, DateTime endDate)
+        {
+            Name = name;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
+
+        public SubTask()
+        {
         }
     }
 }

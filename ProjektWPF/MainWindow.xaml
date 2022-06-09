@@ -154,6 +154,7 @@
                 </Button>
 
                 <ListBox Name="Category_ListBox" ItemsSource="{Binding}" SelectionChanged="Category_ListBox_SelectionChanged" SelectionMode="Single" DisplayMemberPath="Name" Margin="20,0,20,0" Grid.Row="1" Grid.ColumnSpan="4" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
+
                 </ListBox>
 
                 <Button Name="DeleteCategory_Button" Height="30" Grid.Row="2" FontSize="16" Margin="20,0,0,20" Click="DeleteCategory_Button_Click">
@@ -229,7 +230,34 @@
             </TextBox>
             <Image Grid.Column="1" Height="20" Margin="5,7,22,7" Grid.Row="1" Source="/Source/icons8-search-64.png" >
             </Image>
-            <ListBox x:Name="Tasks_ListBox" Grid.Row="2" Grid.ColumnSpan="2" DisplayMemberPath="Name" ItemsSource="{Binding}" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="7,7,15,20" Background="#dcdcdc" MouseDoubleClick="Tasks_ListBox_MouseDoubleClick">
+            <ListBox x:Name="Tasks_ListBox" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding}" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="7,7,15,20" Background="#dcdcdc" MouseDoubleClick="Tasks_ListBox_MouseDoubleClick">
+                <ListBox.ItemTemplate>
+                    <DataTemplate >
+                        <Grid x:Name="BackgroundGrid" Width="335" Height="25" Margin="3" >
+                            <TextBlock Grid.Column="1"  Text="{Binding Name}" VerticalAlignment="Center" Margin="5" />
+                        </Grid>
+                        
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Importance}" Value="0">
+                                <Setter TargetName="BackgroundGrid" Property="Background" Value="#C3F4CA"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding Importance}" Value="1">
+                                <Setter TargetName="BackgroundGrid" Property="Background" Value="#F5F08E"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding Importance}" Value="2">
+                                <Setter TargetName="BackgroundGrid" Property="Background" Value="#FFA280"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding Importance}" Value="3">
+                                <Setter TargetName="BackgroundGrid" Property="Background" Value="#FF7063"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                        
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                
                 <ListBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
