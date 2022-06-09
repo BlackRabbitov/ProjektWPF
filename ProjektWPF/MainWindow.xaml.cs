@@ -345,6 +345,8 @@ namespace ProjektWPF
                         selectedTask.EndDate = taskWindow.edate.SelectedDate.Value;
                     }
                     selectedTask.Category = taskWindow.category.SelectedItem as Category;
+                    basicSort();
+                    Tasks_ListBox.ItemsSource = tasks;
                     Tasks_ListBox.Items.Refresh();
                 }
             }
