@@ -16,7 +16,7 @@ namespace ProjektWPF.Models
 
         public DateTime EndDate { get; set; }
 
-        public List<SubTask> SubTasks = new List<SubTask>();
+        public List<SubTask> SubTasks { get; set; }
 
         public List<Alert> Alerts;
 
