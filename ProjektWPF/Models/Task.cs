@@ -22,7 +22,7 @@ namespace ProjektWPF.Models
 
         public Category Category;
 
-        public bool IsDone;
+        public bool IsDone { get; set; }
         public Task() { }
 
         public Task(string name, int importance, Category category)
