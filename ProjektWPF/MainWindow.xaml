@@ -221,7 +221,7 @@
                 </Button>
             </Grid>
 
-            <TextBox Name="search" Height="30" Margin="7,7,15,7" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Padding="4,4,30,4" FontSize="14" Background="#dcdcdc">
+            <TextBox Name="search" Height="30" Margin="7,7,15,7" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Padding="4,4,30,4" FontSize="14" Background="#dcdcdc" TextChanged="search_TextChanged">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
