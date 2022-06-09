@@ -18,7 +18,7 @@ namespace ProjektWPF.Models
 
         public List<SubTask> SubTasks { get; set; }
 
-        public List<Alert> Alerts;
+        public List<Alert> Alerts { get; set; }
 
         public Category Category;
 
