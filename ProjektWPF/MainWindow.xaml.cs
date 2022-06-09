@@ -347,6 +347,8 @@ namespace ProjektWPF
                     }
                     selectedTask.Category = taskWindow.category.SelectedItem as Category;
                     selectedTask.SubTasks = taskWindow.subtasks;
+                    basicSort();
+                    Tasks_ListBox.ItemsSource = tasks;
                     Tasks_ListBox.Items.Refresh();
                 }
             }
@@ -451,6 +453,33 @@ namespace ProjektWPF
         {
             //tasks.Sort((x, y) => x.Importance - y.Importance);
             tasks = tasks.OrderBy(x => x.Importance).Reverse().ToList();
+        }
+
+        private void search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Category category = Category_ListBox.SelectedItem as Category;
+            string searchText = search.Text.ToLower();
+
+            if(category != null)
+            {
+                tasks = category.Tasks;
+            }
+            else
+            {
+                tasks.Clear();
+                foreach (Category cat in categories)
+                {
+                    foreach (Models.Task task in cat.Tasks)
+                    {
+                        tasks.Add(task);
+                    }
+                }
+            }
+            tasks = tasks.Where(x => x.Name.ToLower().Contains(searchText)).ToList();
+
+            basicSort();
+            Tasks_ListBox.ItemsSource = tasks;
+            Tasks_ListBox.Items.Refresh();
         }
 
         private void sortByDateF()

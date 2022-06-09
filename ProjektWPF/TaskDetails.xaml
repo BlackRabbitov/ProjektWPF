@@ -79,7 +79,19 @@
                     <Button Name="edit_alarm_button" Grid.Row="0" Margin="3" Padding="10,4" Click="edit_alarm_button_Click">Edit</Button>
                     <Button Name="remove_alarm_button" Grid.Row="0" Margin="3" Padding="10,4" Click="remove_alarm_button_Click">Remove</Button>
                 </WrapPanel>
-                <ListBox x:Name="alarms_listbox" ItemsSource="{Binding}" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
+                <ListBox x:Name="alarms_listbox" ItemsSource="{Binding}" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}, {1}">
+                                        <Binding Path="Name" />
+                                        <Binding Path="DateTime" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
         </TabItem>
