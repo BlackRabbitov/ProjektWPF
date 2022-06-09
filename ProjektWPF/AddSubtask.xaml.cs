@@ -46,16 +46,24 @@ namespace ProjektWPF
         }
         public AddSubtask(DateTime sdate)
         {
-            startDate = sdate;
+            if (sdate != new DateTime())
+            {
+                startDate = sdate;
+            }
             InitializeComponent();
-
+            startDate = new DateTime(default);
+            endDate = DateTime.MaxValue;
         }
         public AddSubtask(DateTime sdate, DateTime edate)
         {
-            startDate = sdate;
-            endDate = edate;
+            if(sdate != new DateTime() && edate != new DateTime())
+            {
+                startDate = sdate;
+                endDate = edate;
+            }
             InitializeComponent();
-
+            startDate = new DateTime(default);
+            endDate = DateTime.MaxValue;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
