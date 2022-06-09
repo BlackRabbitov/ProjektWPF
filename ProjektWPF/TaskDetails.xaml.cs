@@ -59,18 +59,40 @@ namespace ProjektWPF
 
                 SourceTask.Alerts.Add(alertCreator.alert);
 
+                alarms_listbox.ItemsSource = SourceTask.Alerts;
                 alarms_listbox.Items.Refresh();
             }
         }
 
         private void edit_alarm_button_Click(object sender, RoutedEventArgs e)
         {
+            Models.Alert selectedAlert = alarms_listbox.SelectedItem as Models.Alert;
 
+            if (selectedAlert != null)
+            {
+                AlertCreator alertEditor = new AlertCreator();
+                alertEditor.Task_name.Text = selectedAlert.Name;
+                alertEditor.Alert_date.Text = selectedAlert.DateTime.ToString();
+
+                if (alertEditor.ShowDialog() == true)
+                {
+                    selectedAlert.Name = alertEditor.Task_name.Text;
+                    selectedAlert.DateTime = DateTime.Parse(alertEditor.Alert_date.Text);
+
+                    alarms_listbox.ItemsSource = SourceTask.Alerts;
+                    alarms_listbox.Items.Refresh();
+                }
+            }
         }
 
         private void remove_alarm_button_Click(object sender, RoutedEventArgs e)
         {
-
+            Models.Alert alertSelected = alarms_listbox.SelectedItem as Models.Alert;
+            if (alertSelected != null)
+            {
+                SourceTask.Alerts.Remove(SourceTask.Alerts.Find(x => x.Name == alertSelected.Name));
+                alarms_listbox.Items.Refresh();
+            }
         }
 
         public void SetSourceTask(Models.Task task)
