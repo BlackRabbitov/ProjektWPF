@@ -250,7 +250,9 @@ namespace ProjektWPF
 
             if(category != null)
             {
-                Tasks_ListBox.ItemsSource = category.Tasks;
+                tasks = category.Tasks;
+                this.basicSort();
+                Tasks_ListBox.ItemsSource = tasks;
                 Tasks_ListBox.Items.Refresh();
             }
         }
@@ -298,6 +300,7 @@ namespace ProjektWPF
             if (taskSelected != null)
             {
                 tasks.Remove(tasks.Find(x => x.Name == taskSelected.Name));
+                categories.Find(x => x == taskSelected.Category).Tasks.Remove(taskSelected);
                 Tasks_ListBox.Items.Refresh();
             }
         }
@@ -322,10 +325,7 @@ namespace ProjektWPF
 
             tasks = (List<Models.Task>)Tasks_ListBox.ItemsSource;
             if (sortByDate)
-            {
                 OrderByDate_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
-                this.basicSort();
-            }
             else
                 OrderByDate_Button.Background = Brushes.Green;
             OrderByImportance_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
@@ -334,7 +334,7 @@ namespace ProjektWPF
             sortByCreationDate = false;
             sortByDate = !sortByDate;
 
-            this.sortByDateF();
+            this.basicSort();
 
             Tasks_ListBox.ItemsSource = tasks;
             Tasks_ListBox.Items.Refresh();
@@ -346,10 +346,7 @@ namespace ProjektWPF
 
             tasks = (List<Models.Task>)Tasks_ListBox.ItemsSource;
             if (sortByImportance)
-            {
                 OrderByImportance_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
-                this.basicSort();
-            }
             else
                 OrderByImportance_Button.Background = Brushes.Green;
             OrderByCreationDate_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
@@ -358,7 +355,7 @@ namespace ProjektWPF
             sortByDate = false;
             sortByImportance = !sortByImportance;
 
-            this.sortByImportanceF();
+            this.basicSort();
 
             Tasks_ListBox.ItemsSource = tasks;
             Tasks_ListBox.Items.Refresh();
@@ -370,10 +367,7 @@ namespace ProjektWPF
 
             tasks = (List<Models.Task>)Tasks_ListBox.ItemsSource;
             if (sortByCreationDate)
-            {
                 OrderByCreationDate_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
-                this.basicSort();
-            }
             else
                 OrderByCreationDate_Button.Background = Brushes.Green;
             OrderByImportance_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
@@ -382,7 +376,7 @@ namespace ProjektWPF
             sortByDate = false;
             sortByCreationDate = !sortByCreationDate;
 
-            this.sortByCreationDateF();
+            this.basicSort();
 
             Tasks_ListBox.ItemsSource = tasks;
             Tasks_ListBox.Items.Refresh();
@@ -407,7 +401,14 @@ namespace ProjektWPF
 
         private void basicSort()
         {
-            tasks = tasks.OrderBy(x => x.Name).ToList();
+            if (sortByCreationDate)
+                this.sortByCreationDateF();
+            else if (sortByImportance)
+                this.sortByImportanceF();
+            else if (sortByDate)
+                this.sortByDateF();
+            else
+                tasks = tasks.OrderBy(x => x.Name).ToList();
         }
     }
 }
