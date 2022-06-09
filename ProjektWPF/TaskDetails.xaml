@@ -63,6 +63,7 @@
                 <TextBlock Foreground="White" Margin="4" Grid.Row="5">Subtasks:</TextBlock>
 
                 <WrapPanel HorizontalAlignment="Right" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="3">
+                    <Button Name="finish_task_button" Margin="3" Padding="10,4" Click="finish_task_button_Click">Finish task</Button>
                     <Button Name="edit_task_button" Margin="3" Padding="10,4" Click="edit_task_button_Click">Edit task</Button>
                     <Button Name="close_button" Margin="3" Padding="10,4" Click="close_button_Click">Close</Button>
                 </WrapPanel>

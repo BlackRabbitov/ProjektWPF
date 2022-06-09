@@ -213,6 +213,16 @@ namespace ProjektWPF
             }
             
         }
-        
+
+        private void finish_task_button_Click(object sender, RoutedEventArgs e)
+        {
+            SourceTask.IsDone = true;
+            this.DialogResult = true;
+        }
+
+        public bool IsTaskFinished()
+        {
+            return SourceTask.IsDone;
+        }
     }
 }
