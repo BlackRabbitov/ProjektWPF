@@ -10,12 +10,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Drawing;
 
 
 namespace ProjektWPF
@@ -59,8 +59,10 @@ namespace ProjektWPF
                 foreach(Models.Task task in category.Tasks)
                 {
                     task.Category = category;
+                    tasks.Add(task);
                 }
             }
+            this.basicSort();
 
             Category_ListBox.DataContext = categories;
             Tasks_ListBox.DataContext = tasks;
@@ -214,12 +216,59 @@ namespace ProjektWPF
 
         private void Export_Button_Click(object sender, RoutedEventArgs e)
         {
+            var dialog = new FolderBrowserDialog();
+            dialog.ShowDialog();
+            string filename = dialog.SelectedPath;
 
+            // Get the selected file name and display in a TextBox 
+            if (filename != "")
+            {
+                // Open document 
+                filename += "/ToDo.json";
+                string fileToExportFromName = "../../Data/ToDo.json";
+                File.Copy(fileToExportFromName, filename);
+            }
         }
 
         private void Import_Button_Click(object sender, RoutedEventArgs e)
         {
+            // Create OpenFileDialog 
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
+
+
+            // Set filter for file extension and default file extension 
+            dlg.DefaultExt = ".json";
+            dlg.Filter = "JSON Files (*.json)|*.json";
+
+
+            // Display OpenFileDialog by calling ShowDialog method 
+            Nullable<bool> result = dlg.ShowDialog();
+
+
+            // Get the selected file name and display in a TextBox 
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+                string fileToInportIntoName = "../../Data/ToDo.json";
+                string backupFileToInportIntoName = "../../Data/ToDo.json.bac";
+                File.Replace(filename, fileToInportIntoName, backupFileToInportIntoName, false);
+                
+                string jsonString = File.ReadAllText(fileToInportIntoName);
+                categories = JsonSerializer.Deserialize<List<Category>>(jsonString);
+                tasks.Clear();
+
+                foreach (Category category in categories)
+                {
+                    foreach (Models.Task task in category.Tasks)
+                    {
+                        task.Category = category;
+                        tasks.Add(task);
+                    }
+                }
+                this.basicSort();
+            }
         }
 
         public void Init_ByTimeCategories()
@@ -397,7 +446,7 @@ namespace ProjektWPF
         private void sortByImportanceF()
         {
             //tasks.Sort((x, y) => x.Importance - y.Importance);
-            tasks = tasks.OrderBy(x => x.Importance).ToList();
+            tasks = tasks.OrderBy(x => x.Importance).Reverse().ToList();
         }
 
         private void sortByDateF()
