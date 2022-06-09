@@ -32,6 +32,8 @@ namespace ProjektWPF
 
         private System.Windows.Forms.NotifyIcon m_notifyIcon;
         private WindowState m_storedWindowState = WindowState.Normal;
+
+        private bool sortByCreationDate, sortByDate, sortByImportance;
         public MainWindow()
         {
             InitializeComponent();
@@ -51,6 +53,13 @@ namespace ProjektWPF
             string fileName = "../../Data/ToDo.json";
             string jsonString = File.ReadAllText(fileName);
             categories = JsonSerializer.Deserialize<List<Category>>(jsonString);
+            foreach(Category category in categories)
+            {
+                foreach(Models.Task task in category.Tasks)
+                {
+                    task.Category = category;
+                }
+            }
 
             Category_ListBox.DataContext = categories;
             Tasks_ListBox.DataContext = tasks;
@@ -302,6 +311,100 @@ namespace ProjektWPF
                 taskDetails.SetSourceTask(taskSelected);
                 taskDetails.Show();
             }
+        }
+
+        private void OrderByDate_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            tasks = (List<Models.Task>)Tasks_ListBox.ItemsSource;
+            if (sortByDate)
+            {
+                OrderByDate_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
+                this.basicSort();
+            }
+            else
+                OrderByDate_Button.Background = Brushes.Green;
+            OrderByImportance_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
+            sortByImportance = false;
+            OrderByCreationDate_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
+            sortByCreationDate = false;
+            sortByDate = !sortByDate;
+
+            this.sortByDateF();
+
+            Tasks_ListBox.ItemsSource = tasks;
+            Tasks_ListBox.Items.Refresh();
+        }
+
+        private void OrderByImportance_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            tasks = (List<Models.Task>)Tasks_ListBox.ItemsSource;
+            if (sortByImportance)
+            {
+                OrderByImportance_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
+                this.basicSort();
+            }
+            else
+                OrderByImportance_Button.Background = Brushes.Green;
+            OrderByCreationDate_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
+            sortByCreationDate = false;
+            OrderByDate_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
+            sortByDate = false;
+            sortByImportance = !sortByImportance;
+
+            this.sortByImportanceF();
+
+            Tasks_ListBox.ItemsSource = tasks;
+            Tasks_ListBox.Items.Refresh();
+        }
+
+        private void OrderByCreationDate_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            tasks = (List<Models.Task>)Tasks_ListBox.ItemsSource;
+            if (sortByCreationDate)
+            {
+                OrderByCreationDate_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
+                this.basicSort();
+            }
+            else
+                OrderByCreationDate_Button.Background = Brushes.Green;
+            OrderByImportance_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
+            sortByImportance = false;
+            OrderByDate_Button.Background = (Brush)bc.ConvertFrom("#E6E6E6");
+            sortByDate = false;
+            sortByCreationDate = !sortByCreationDate;
+
+            this.sortByCreationDateF();
+
+            Tasks_ListBox.ItemsSource = tasks;
+            Tasks_ListBox.Items.Refresh();
+        }
+
+        private void sortByCreationDateF()
+        {
+            //tasks.Sort((x, y) => DateTime.Compare(x.DateOfCreation, y.DateOfCreation));
+        }
+
+        private void sortByImportanceF()
+        {
+            //tasks.Sort((x, y) => x.Importance - y.Importance);
+            tasks = tasks.OrderBy(x => x.Importance).ToList();
+        }
+
+        private void sortByDateF()
+        {
+            //tasks.Sort((x, y) => DateTime.Compare(x.StartDate, y.StartDate));
+            tasks = tasks.OrderBy(x => x.StartDate).ToList();
+        }
+
+        private void basicSort()
+        {
+            tasks = tasks.OrderBy(x => x.Name).ToList();
         }
     }
 }
