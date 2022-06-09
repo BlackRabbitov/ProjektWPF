@@ -372,11 +372,17 @@ namespace ProjektWPF
             {
                 TaskDetails taskDetails = new TaskDetails();
                 taskDetails.SetSourceTask(taskSelected);
-                //taskDetails.subtasks = taskSelected.SubTasks;
-                //taskDetails.subtasks_listbox.ItemsSource = taskDetails.subtasks;
+
                 if (taskDetails.ShowDialog() == true)
                 {
-
+                    if(taskDetails.IsTaskFinished())
+                    {
+                        // What should happen with finished task
+                        tasks.Remove(taskSelected);
+                        categories.Find(x => x.Name == taskSelected.Category.Name).Tasks.Remove(taskSelected);
+                        Tasks_ListBox.ItemsSource = tasks;
+                        Tasks_ListBox.Items.Refresh();
+                    }
                 }
             }
         }
