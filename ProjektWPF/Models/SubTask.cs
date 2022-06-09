@@ -24,6 +24,11 @@ namespace ProjektWPF.Models
             StartDate = startDate;
             EndDate = endDate;
         }
+        public SubTask(string name, DateTime startDate)
+        {
+            Name = name;
+            StartDate = startDate;
+        }
 
         public SubTask()
         {
