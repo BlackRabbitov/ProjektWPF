@@ -1,4 +1,4 @@
-﻿<Window x:Class="ProjektWPF.AddTask"
+﻿<Window x:Class="ProjektWPF.AddSubtask"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,12 +8,8 @@
         ResizeMode="NoResize"
         FontSize="14"
         Background="#363636"
-        Title="Add task" Height="350" Width="450">
-
-
-
-
-    <Grid Margin="4">
+        Title="Add subtask" Height="200" Width="450">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
@@ -22,27 +18,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
         <TextBlock Foreground="White" Margin="4">Name :</TextBlock>
         <TextBox Name="name" Grid.Column="1" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"></TextBox>
-
-        <TextBlock Foreground="White" Margin="4" Grid.Row="1">Importance :</TextBlock>
-        <Slider Name="importance" Margin="10,3,3,3" Grid.Row="1" Grid.Column="1" Maximum="3" TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center" TickPlacement="BottomRight" ValueChanged="importance_ValueChanged"></Slider>
-
-        <TextBlock Foreground="White" Margin="4" Grid.Row="2">Category :</TextBlock>
-        <ComboBox Name="category" Grid.Row="2" Grid.Column="1" Margin="10,4,4,4" Background="#dcdcdc" ItemsSource="{Binding}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <CheckBox Grid.Row="3" Margin="5" Name="check" Foreground="White" Checked="check_Checked" Unchecked="check_Checked" >Date</CheckBox>
-        <Grid Grid.Row="4" Grid.ColumnSpan="2">
+        <CheckBox Grid.Row="1" Margin="5" Name="check" Foreground="White" Checked="check_Checked" Unchecked="check_Checked" >Date</CheckBox>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="66"/>
@@ -52,18 +35,15 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Foreground="White" Margin="4,4,4,4" Grid.ColumnSpan="2" VerticalAlignment="Center">Start date:</TextBlock>
-            <DatePicker Name="sdate"  Grid.Column="2" Margin="20,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" IsEnabled="False"></DatePicker>
+            <DatePicker Name="sdate" Grid.Column="2" Margin="20,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" IsEnabled="False" ></DatePicker>
             <TextBlock Foreground="White" Margin="4,4,3.55,4" Grid.Column="3" VerticalAlignment="Center">End date:</TextBlock>
             <DatePicker Name="edate" Grid.Column="4" Margin="20.45,4,3.55,4" VerticalAlignment="Center" Background="#dcdcdc"  IsEnabled="False"></DatePicker>
         </Grid>
-        <TextBlock Foreground="White" Margin="4" Grid.Row="5">Subtasks :</TextBlock>
-        <ListBox Name="subtasks_list" ItemsSource="{Binding}" DisplayMemberPath="Name" Margin="4" Grid.Column="1" Grid.Row="5" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
-        </ListBox>
 
-        <WrapPanel HorizontalAlignment="Right" Grid.Row="6" Grid.Column="1" Margin="3">
-            <Button Margin="3" Padding="20,4" Click="Add_Subtask_Click">Add Subtask</Button>
-            <Button Name="add" Margin="3" Padding="20,4" Click="Add_button">Add</Button>
+        <WrapPanel HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" Margin="3">
+            <Button Name="add" Margin="3" Padding="20,4" Click="Add_Click">Add</Button>
             <Button Margin="3" Padding="25,4" Click="Cancel_Click">Cancel</Button>
         </WrapPanel>
     </Grid>
+    
 </Window>

@@ -331,7 +331,8 @@ namespace ProjektWPF
                 {
                     taskWindow.check.IsChecked = false;
                 }
-
+                taskWindow.subtasks = selectedTask.SubTasks;
+                taskWindow.subtasks_list.ItemsSource = taskWindow.subtasks;
                 taskWindow.category.SelectedItem = selectedTask.Category;
                 taskWindow.add.Content = "Modify";
 
@@ -345,6 +346,7 @@ namespace ProjektWPF
                         selectedTask.EndDate = taskWindow.edate.SelectedDate.Value;
                     }
                     selectedTask.Category = taskWindow.category.SelectedItem as Category;
+                    selectedTask.SubTasks = taskWindow.subtasks;
                     Tasks_ListBox.Items.Refresh();
                 }
             }
@@ -368,6 +370,8 @@ namespace ProjektWPF
             {
                 TaskDetails taskDetails = new TaskDetails();
                 taskDetails.SetSourceTask(taskSelected);
+                //taskDetails.subtasks = taskSelected.SubTasks;
+                //taskDetails.subtasks_listbox.ItemsSource = taskDetails.subtasks;
                 if (taskDetails.ShowDialog() == true)
                 {
 
