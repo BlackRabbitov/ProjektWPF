@@ -309,7 +309,10 @@ namespace ProjektWPF
             {
                 TaskDetails taskDetails = new TaskDetails();
                 taskDetails.SetSourceTask(taskSelected);
-                taskDetails.Show();
+                if (taskDetails.ShowDialog() == true)
+                {
+
+                }
             }
         }
 
