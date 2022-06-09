@@ -31,6 +31,7 @@ namespace ProjektWPF.Models
             Name = name;
             Importance = importance;
             Category = category;
+            Alerts = new List<Alert>();
         }
 
         public Task(string name, int importance, DateTime startDate, DateTime endDate, Category category)
@@ -41,6 +42,7 @@ namespace ProjektWPF.Models
             StartDate = startDate;
             EndDate = endDate;
             Category = category;
+            Alerts = new List<Alert>();
         }
 
         public Task(string name, int importance, DateTime startDate, Category category)
@@ -50,6 +52,7 @@ namespace ProjektWPF.Models
             Importance = importance;
             StartDate = startDate;
             Category = category;
+            Alerts = new List<Alert>();
         }
     }
 }

@@ -47,7 +47,20 @@ namespace ProjektWPF
 
         private void add_alarm_button_Click(object sender, RoutedEventArgs e)
         {
+            AlertCreator alertCreator = new AlertCreator();
+            alertCreator.Task_name.Text = SourceTask.Name;
 
+            if (alertCreator.ShowDialog() == true)
+            {
+                if(SourceTask.Alerts == null)
+                {
+                    SourceTask.Alerts = new List<Models.Alert>();
+                }
+
+                SourceTask.Alerts.Add(alertCreator.alert);
+
+                alarms_listbox.Items.Refresh();
+            }
         }
 
         private void edit_alarm_button_Click(object sender, RoutedEventArgs e)
@@ -66,7 +79,9 @@ namespace ProjektWPF
             name.DataContext = SourceTask;
             importance.DataContext = SourceTask;
             category.DataContext = SourceTask;
-            if(SourceTask.StartDate == null)
+            subtasks_listbox.ItemsSource = SourceTask.SubTasks;
+            alarms_listbox.ItemsSource = SourceTask.Alerts;
+            if (SourceTask.StartDate == null)
             {
                 start_date.Text = "NaN";
             } else
@@ -80,8 +95,6 @@ namespace ProjektWPF
             {
                 end_date.DataContext = SourceTask;
             }
-            subtasks_listbox.DataContext = SourceTask;
-            alarms_listbox.DataContext = SourceTask;
         }
 
         private void edit_task_button_Click(object sender, RoutedEventArgs e)
