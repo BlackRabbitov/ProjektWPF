@@ -210,13 +210,13 @@
                 <Button Name="EditTask_Button" Grid.Column="4" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Left" Margin="4,2,0,2" Click="EditTask_Button_Click">
                     <Image Source="Source/icons8-edit-64.png" Margin="5"></Image>
                 </Button>
-                <Button Name="OrderByCreationDate_Button" Grid.Column="2" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Name="OrderByCreationDate_Button" Grid.Column="2" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center" Click="OrderByCreationDate_Button_Click">
                     <Image Source="Source/icons8-sort-by-creation-date-48.png" Margin="5"></Image>
                 </Button>
-                <Button Name="OrderByImportance_Button" Grid.Column="1" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Name="OrderByImportance_Button" Grid.Column="1" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center" Click="OrderByImportance_Button_Click">
                     <Image Source="Source/icons8-box-important-50.png" Margin="2"></Image>
                 </Button>
-                <Button Name="OrderByDate_Button" Grid.Column="0" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center">
+                <Button Name="OrderByDate_Button" Grid.Column="0" Width="40" Height="40" Style="{StaticResource CircleButton}" Background="#E6E6E6" HorizontalAlignment="Center" Click="OrderByDate_Button_Click">
                     <Image Source="Source/icons8-calendar-50.png" Margin="5"></Image>
                 </Button>
             </Grid>
