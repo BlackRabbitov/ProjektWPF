@@ -304,12 +304,88 @@ namespace ProjektWPF
         {
             Category category = Category_ListBox.SelectedItem as Category;
 
+            List<Models.Task> allTasks = GetAllTasks();
+            List<Models.Task> hTasks = new List<Models.Task>();
             if(category != null)
             {
-                tasks = category.Tasks;
-                this.basicSort();
-                Tasks_ListBox.ItemsSource = tasks;
-                Tasks_ListBox.Items.Refresh();
+                if(category.Name == "In year")
+                {
+                    foreach(Models.Task task in allTasks)
+                    {
+                        if (task.StartDate != null && task.StartDate <= DateTime.Now.AddYears(1) && task.StartDate >= DateTime.Now)
+                        {
+                            hTasks.Add(task);
+                        }
+                    }
+                    tasks = hTasks;
+                    this.basicSort();
+                    Tasks_ListBox.ItemsSource = tasks;
+                    Tasks_ListBox.Items.Refresh();
+                } 
+                else if(category.Name == "In month")
+                {
+                    foreach (Models.Task task in allTasks)
+                    {
+                        if (task.StartDate != null && task.StartDate <= DateTime.Now.AddMonths(1) && task.StartDate >= DateTime.Now)
+                        {
+                            hTasks.Add(task);
+                        }
+                    }
+                    tasks = hTasks;
+                    this.basicSort();
+                    Tasks_ListBox.ItemsSource = tasks;
+                    Tasks_ListBox.Items.Refresh();
+                } 
+                else if(category.Name == "In week")
+                {
+                    foreach (Models.Task task in allTasks)
+                    {
+                        if (task.StartDate != null && task.StartDate <= DateTime.Now.AddDays(7) && task.StartDate >= DateTime.Now)
+                        {
+                            hTasks.Add(task);
+                        }
+                    }
+                    tasks = hTasks;
+                    this.basicSort();
+                    Tasks_ListBox.ItemsSource = tasks;
+                    Tasks_ListBox.Items.Refresh();
+                } 
+                else if(category.Name == "Tomorrow")
+                {
+                    foreach (Models.Task task in allTasks)
+                    {
+                        if (task.StartDate != null && task.StartDate <= DateTime.Now.AddDays(1) && task.StartDate >= DateTime.Now)
+                        {
+                            hTasks.Add(task);
+                        }
+                    }
+                    tasks = hTasks;
+                    this.basicSort();
+                    Tasks_ListBox.ItemsSource = tasks;
+                    Tasks_ListBox.Items.Refresh();
+                } 
+                else if(category.Name == "Today")
+                {
+                    foreach (Models.Task task in allTasks)
+                    {
+                        if (task.StartDate != null && task.StartDate.Day == DateTime.Now.Day)
+                        {
+                            hTasks.Add(task);
+                        }
+                    }
+                    tasks = hTasks;
+                    this.basicSort();
+                    Tasks_ListBox.ItemsSource = tasks;
+                    Tasks_ListBox.Items.Refresh();
+                } 
+                else
+                {
+                    tasks = category.Tasks;
+                    this.basicSort();
+                    Tasks_ListBox.ItemsSource = tasks;
+                    Tasks_ListBox.Items.Refresh();
+                }
+
             }
         }
 
