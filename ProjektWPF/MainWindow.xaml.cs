@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
 
 namespace ProjektWPF
@@ -66,6 +67,12 @@ namespace ProjektWPF
 
             Category_ListBox.DataContext = categories;
             Tasks_ListBox.DataContext = tasks;
+
+
+            foreach(var x in Tasks_ListBox.Items)
+            {
+                
+            }
         }
 
         // Should work in background when minimalized
