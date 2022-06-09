@@ -8,7 +8,7 @@
         ResizeMode="NoResize"
         FontSize="14"
         Background="#363636"
-        Title="AddTask" Height="350" Width="450">
+        Title="Add task" Height="350" Width="450">
 
 
 

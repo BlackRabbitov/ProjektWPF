@@ -18,7 +18,9 @@ namespace ProjektWPF.Models
 
         public List<SubTask> SubTasks;
 
-        public Category _Category;
+        public List<Alert> Alerts;
+
+        public Category Category;
 
         public bool IsDone;
         public Task() { }
@@ -28,7 +30,7 @@ namespace ProjektWPF.Models
             IsDone = false;
             Name = name;
             Importance = importance;
-            _Category = category;
+            Category = category;
         }
 
         public Task(string name, int importance, DateTime startDate, DateTime endDate, Category category)
@@ -38,7 +40,7 @@ namespace ProjektWPF.Models
             Importance = importance;
             StartDate = startDate;
             EndDate = endDate;
-            _Category = category;
+            Category = category;
         }
 
         public Task(string name, int importance, DateTime startDate, Category category)
@@ -47,7 +49,7 @@ namespace ProjektWPF.Models
             Name = name;
             Importance = importance;
             StartDate = startDate;
-            _Category = category;
+            Category = category;
         }
     }
 }

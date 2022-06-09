@@ -191,7 +191,7 @@ namespace ProjektWPF
             if (addTask.ShowDialog() == true)
             {
                 tasks.Add(addTask.task);
-                categories.Find(x => x.Name == addTask.task._Category.Name).Tasks.Add(addTask.task);
+                categories.Find(x => x.Name == addTask.task.Category.Name).Tasks.Add(addTask.task);
                 Tasks_ListBox.Items.Refresh();
             }
         }
@@ -265,7 +265,7 @@ namespace ProjektWPF
                     taskWindow.check.IsChecked = false;
                 }
 
-                taskWindow.category.SelectedItem = selectedTask._Category;
+                taskWindow.category.SelectedItem = selectedTask.Category;
                 taskWindow.add.Content = "Modify";
 
                 if (taskWindow.ShowDialog() == true)
@@ -277,7 +277,7 @@ namespace ProjektWPF
                         selectedTask.StartDate = taskWindow.sdate.SelectedDate.Value;
                         selectedTask.EndDate = taskWindow.edate.SelectedDate.Value;
                     }
-                    selectedTask._Category = taskWindow.category.SelectedItem as Category;
+                    selectedTask.Category = taskWindow.category.SelectedItem as Category;
                     Tasks_ListBox.Items.Refresh();
                 }
             }
@@ -290,6 +290,17 @@ namespace ProjektWPF
             {
                 tasks.Remove(tasks.Find(x => x.Name == taskSelected.Name));
                 Tasks_ListBox.Items.Refresh();
+            }
+        }
+
+        private void Tasks_ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Models.Task taskSelected = Tasks_ListBox.SelectedItem as Models.Task;
+            if (taskSelected != null)
+            {
+                TaskDetails taskDetails = new TaskDetails();
+                taskDetails.SetSourceTask(taskSelected);
+                taskDetails.Show();
             }
         }
     }
