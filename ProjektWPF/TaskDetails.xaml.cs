@@ -100,7 +100,7 @@ namespace ProjektWPF
             SourceTask = task;
             name.DataContext = SourceTask;
             importance.DataContext = SourceTask;
-            category.DataContext = SourceTask;
+            category.DataContext = SourceTask.Category;
             subtasks_listbox.ItemsSource = SourceTask.SubTasks;
             alarms_listbox.ItemsSource = SourceTask.Alerts;
             if (SourceTask.StartDate == null)
