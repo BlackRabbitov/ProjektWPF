@@ -446,7 +446,7 @@ namespace ProjektWPF
         private void sortByImportanceF()
         {
             //tasks.Sort((x, y) => x.Importance - y.Importance);
-            tasks = tasks.OrderBy(x => x.Importance).ToList();
+            tasks = tasks.OrderBy(x => x.Importance).Reverse().ToList();
         }
 
         private void sortByDateF()
