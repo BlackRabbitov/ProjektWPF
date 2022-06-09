@@ -121,7 +121,6 @@ namespace ProjektWPF
                 AddSubtask addSubtask = new AddSubtask(sdate.SelectedDate.Value, edate.SelectedDate.Value);
                 if (addSubtask.ShowDialog() == true)
                 {
-                    task.SubTasks.Add(addSubtask.subtask);
                     subtasks.Add(addSubtask.subtask);
                     subtasks_list.Items.Refresh();
                 }
@@ -131,7 +130,6 @@ namespace ProjektWPF
                 AddSubtask addSubtask = new AddSubtask(sdate.SelectedDate.Value);
                 if (addSubtask.ShowDialog() == true)
                 {
-                    task.SubTasks.Add(addSubtask.subtask);
                     subtasks.Add(addSubtask.subtask);
                     subtasks_list.Items.Refresh();
                 }

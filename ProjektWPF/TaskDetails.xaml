@@ -57,7 +57,7 @@
                         <Button Name="remove_subtask_button" Margin="3" Padding="10,4" Click="remove_subtask_button_Click">Remove subtask</Button>
                         <Button Name="edit_subtask_button" Margin="3" Padding="10,4" Click="edit_subtask_button_Click">Edit subtask</Button>
                     </WrapPanel>
-                    <ListBox Name="subtasks_listbox" Grid.Row="1" Margin="10, 4, 4, 4" ItemsSource="{Binding SubTasks}" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
+                    <ListBox Name="subtasks_listbox" Grid.Row="1" Margin="10, 4, 4, 4" ItemsSource="{Binding SubTasks}" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#dcdcdc">
                     </ListBox>
                 </Grid>
                 <TextBlock Foreground="White" Margin="4" Grid.Row="5">Subtasks:</TextBlock>

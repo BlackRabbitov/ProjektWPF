@@ -16,7 +16,7 @@ namespace ProjektWPF.Models
 
         public DateTime EndDate { get; set; }
 
-        public List<SubTask> SubTasks;
+        public List<SubTask> SubTasks = new List<SubTask>();
 
         public List<Alert> Alerts;
 
@@ -27,7 +27,6 @@ namespace ProjektWPF.Models
 
         public Task(string name, int importance, Category category)
         {
-            SubTasks = new List<SubTask>();
             IsDone = false;
             Name = name;
             Importance = importance;
@@ -37,7 +36,6 @@ namespace ProjektWPF.Models
 
         public Task(string name, int importance, DateTime startDate, DateTime endDate, Category category)
         {
-            SubTasks = new List<SubTask>();
             IsDone = false;
             Name = name;
             Importance = importance;
@@ -49,7 +47,6 @@ namespace ProjektWPF.Models
 
         public Task(string name, int importance, DateTime startDate, Category category)
         {
-            SubTasks = new List<SubTask>();
             IsDone = false;
             Name = name;
             Importance = importance;

@@ -21,27 +21,40 @@ namespace ProjektWPF
     public partial class AddSubtask : Window
     {
         public SubTask subtask;
+        private static DateTime startDate = new DateTime(default);
+        private static DateTime endDate = DateTime.MaxValue;
+
+        public static DateTime StartDate
+        {
+            get
+            {
+                return startDate;
+            }
+        }
+
+        public static DateTime EndDate
+        {
+            get
+            {
+                return endDate;
+            }
+        }
+
         public AddSubtask()
         {
             InitializeComponent();
         }
         public AddSubtask(DateTime sdate)
         {
+            startDate = sdate;
             InitializeComponent();
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, sdate.AddDays(-1));
-            this.sdate.BlackoutDates.Add(cdr);
-            this.edate.BlackoutDates.Add(cdr);
 
         }
         public AddSubtask(DateTime sdate, DateTime edate)
         {
+            startDate = sdate;
+            endDate = edate;
             InitializeComponent();
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, sdate.AddDays(-1));
-            CalendarDateRange cdr2 = new CalendarDateRange(edate.AddDays(1), DateTime.MaxValue);
-            this.sdate.BlackoutDates.Add(cdr);
-            this.edate.BlackoutDates.Add(cdr);
-            this.sdate.BlackoutDates.Add(cdr2);
-            this.edate.BlackoutDates.Add(cdr2);
 
         }
 

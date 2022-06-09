@@ -9,6 +9,14 @@
         FontSize="14"
         Background="#363636"
         Title="Add subtask" Height="200" Width="450">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource {x:Type DatePicker}}">
+            <Setter Property="DisplayDateStart" Value="{x:Static local:AddSubtask.StartDate}" />
+            <Setter Property="DisplayDateEnd" Value="{x:Static local:AddSubtask.EndDate}" />
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>

@@ -372,8 +372,7 @@ namespace ProjektWPF
             {
                 TaskDetails taskDetails = new TaskDetails();
                 taskDetails.SetSourceTask(taskSelected);
-                //taskDetails.subtasks = taskSelected.SubTasks;
-                //taskDetails.subtasks_listbox.ItemsSource = taskDetails.subtasks;
+                taskDetails.subtasks_listbox.ItemsSource = taskSelected.SubTasks;
                 if (taskDetails.ShowDialog() == true)
                 {
 

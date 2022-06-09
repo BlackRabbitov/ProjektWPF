@@ -33,17 +33,65 @@ namespace ProjektWPF
 
         private void edit_subtask_button_Click(object sender, RoutedEventArgs e)
         {
+            SubTask subtaskSelected = subtasks_listbox.SelectedItem as SubTask;
 
+            if (subtaskSelected != null)
+            {
+                AddSubtask addSub = new AddSubtask();
+                addSub.name.Text = subtaskSelected.Name;
+                addSub.sdate.SelectedDate = subtaskSelected.StartDate;
+                addSub.edate.SelectedDate = subtaskSelected.EndDate;
+
+                if (addSub.ShowDialog() == true)
+                {
+                    subtaskSelected.Name = addSub.name.Text;
+                    subtaskSelected.StartDate = addSub.sdate.SelectedDate.Value;
+                    subtaskSelected.EndDate = addSub.edate.SelectedDate.Value;
+                    subtasks_listbox.Items.Refresh();
+                }
+            }
         }
 
         private void remove_subtask_button_Click(object sender, RoutedEventArgs e)
         {
+            SubTask subtaskSelected = subtasks_listbox.SelectedItem as SubTask;
+            if (subtasks_listbox != null)
+            {
+                SourceTask.SubTasks.Remove(SourceTask.SubTasks.Find(x => x.Name == subtaskSelected.Name));
+                subtasks_listbox.Items.Refresh();
+            }
 
         }
 
         private void add_subtask_button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (SourceTask.StartDate != null && SourceTask.EndDate != null)
+            {
+                AddSubtask addSubtask = new AddSubtask(SourceTask.StartDate, SourceTask.EndDate);
+                if (addSubtask.ShowDialog() == true)
+                {
+                    SourceTask.SubTasks.Add(addSubtask.subtask);
+                    subtasks_listbox.Items.Refresh();
+                }
+            }
+            else if (SourceTask.StartDate != null && SourceTask.EndDate == default(DateTime))
+            {
+                AddSubtask addSubtask = new AddSubtask(SourceTask.StartDate);
+                if (addSubtask.ShowDialog() == true)
+                {
+                    SourceTask.SubTasks.Add(addSubtask.subtask);
+                    subtasks_listbox.Items.Refresh();
+                }
+            }
+            else
+            {
+                AddSubtask addSubtask = new AddSubtask();
+                if (addSubtask.ShowDialog() == true)
+                {
+                    SourceTask.SubTasks.Add(addSubtask.subtask);
+                    subtasks_listbox.Items.Refresh();
+                }
+            }
         }
 
         private void add_alarm_button_Click(object sender, RoutedEventArgs e)
@@ -127,6 +175,8 @@ namespace ProjektWPF
 
             taskWindow.name.Text = SourceTask.Name;
             taskWindow.importance.Value = SourceTask.Importance;
+            taskWindow.subtasks = SourceTask.SubTasks;
+            taskWindow.subtasks_list.ItemsSource = taskWindow.subtasks;
             if (SourceTask.StartDate != new DateTime())
             {
                 taskWindow.check.IsChecked = true;
@@ -150,6 +200,7 @@ namespace ProjektWPF
                     SourceTask.StartDate = taskWindow.sdate.SelectedDate.Value;
                     SourceTask.EndDate = taskWindow.edate.SelectedDate.Value;
                 }
+                SourceTask.SubTasks = taskWindow.subtasks;
                 SourceTask.Category = taskWindow.category.SelectedItem as Models.Category;
                 window.Tasks_ListBox.Items.Refresh();
 
@@ -162,5 +213,6 @@ namespace ProjektWPF
             }
             
         }
+        
     }
 }
