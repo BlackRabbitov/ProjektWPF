@@ -223,9 +223,11 @@ namespace ProjektWPF
             // Get the selected file name and display in a TextBox 
             if (filename != "")
             {
+                string fileToExportFromName = "../../Data/ToDo.json";
+                string jsonString = JsonSerializer.Serialize(categories);
+                File.WriteAllText(fileToExportFromName, jsonString);
                 // Open document 
                 filename += "/ToDo.json";
-                string fileToExportFromName = "../../Data/ToDo.json";
                 File.Copy(fileToExportFromName, filename);
             }
         }
@@ -268,6 +270,8 @@ namespace ProjektWPF
                     }
                 }
                 this.basicSort();
+                Tasks_ListBox.ItemsSource = tasks;
+                Tasks_ListBox.Items.Refresh();
             }
         }
 
