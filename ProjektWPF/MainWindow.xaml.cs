@@ -255,8 +255,8 @@ namespace ProjektWPF
                 string filename = dlg.FileName;
                 string fileToInportIntoName = "../../Data/ToDo.json";
                 string backupFileToInportIntoName = "../../Data/ToDo.json.bac";
-                File.Replace(filename, fileToInportIntoName, backupFileToInportIntoName, false);
-                
+                //File.Replace(filename, fileToInportIntoName, backupFileToInportIntoName, false);
+                File.Copy(filename, fileToInportIntoName, true);
                 string jsonString = File.ReadAllText(fileToInportIntoName);
                 categories = JsonSerializer.Deserialize<List<Category>>(jsonString);
                 tasks.Clear();
