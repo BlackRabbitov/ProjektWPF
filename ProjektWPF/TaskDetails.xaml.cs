@@ -151,44 +151,44 @@ namespace ProjektWPF
             category.DataContext = SourceTask.Category;
             subtasks_listbox.ItemsSource = SourceTask.SubTasks;
             alarms_listbox.ItemsSource = SourceTask.Alerts;
-            //importance.DataContext = SourceTask;
+
+            BrushConverter bc = new BrushConverter();
+
             if (SourceTask.Importance == 0)
             {
                 importance.Text = "not important";
-                BrushConverter bc = new BrushConverter();
-                importance.Foreground = (Brush)bc.ConvertFrom("#C3F4CA");
-
+                importance.Foreground = (Brush)bc.ConvertFrom("#ACF84D");
             }
             else if (SourceTask.Importance == 1)
             {
                 importance.Text = "a little important";
-                BrushConverter bc = new BrushConverter();
-                importance.Foreground = (Brush)bc.ConvertFrom("#F5F08E");
+                importance.Foreground = (Brush)bc.ConvertFrom("#F0E617");
             }
             else if (SourceTask.Importance == 2)
             {
                 importance.Text = "important";
-                BrushConverter bc = new BrushConverter();
                 importance.Foreground = (Brush)bc.ConvertFrom("#FFA280");
             }
             else if (SourceTask.Importance == 3)
             {
                 importance.Text = "very important";
-                BrushConverter bc = new BrushConverter();
                 importance.Foreground = (Brush)bc.ConvertFrom("#FF7063");
             }
 
             if (SourceTask.StartDate == null)
             {
                 start_date.Text = "NaN";
-            } else
+            } 
+            else
             {
                 start_date.DataContext = SourceTask;
             }
+
             if (SourceTask.EndDate == null)
             {
                 end_date.Text = "NaN";
-            } else
+            } 
+            else
             {
                 end_date.DataContext = SourceTask;
             }
