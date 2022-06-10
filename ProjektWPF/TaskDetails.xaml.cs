@@ -55,7 +55,7 @@ namespace ProjektWPF
         private void remove_subtask_button_Click(object sender, RoutedEventArgs e)
         {
             SubTask subtaskSelected = subtasks_listbox.SelectedItem as SubTask;
-            if (subtasks_listbox != null)
+            if (subtasks_listbox != null && subtaskSelected != null)
             {
                 SourceTask.SubTasks.Remove(SourceTask.SubTasks.Find(x => x.Name == subtaskSelected.Name));
                 subtasks_listbox.Items.Refresh();

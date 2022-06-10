@@ -31,8 +31,15 @@
         <TextBox Name="name" Grid.Column="1" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"></TextBox>
 
         <TextBlock Foreground="White" Margin="4" Grid.Row="1">Importance :</TextBlock>
-        <Slider Name="importance" Margin="10,3,3,3" Grid.Row="1" Grid.Column="1" Maximum="3" TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center" TickPlacement="BottomRight" ValueChanged="importance_ValueChanged"></Slider>
-
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Slider Name="importance"  Margin="10,3,3,3" Maximum="3" TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center" TickPlacement="BottomRight" ValueChanged="importance_ValueChanged"></Slider>
+            <TextBlock Name="imp_text" Foreground="White" Margin="4" Grid.Column="1" FontSize="8" VerticalAlignment="Center">Imp</TextBlock>
+        </Grid>
+       
         <TextBlock Foreground="White" Margin="4" Grid.Row="2">Category :</TextBlock>
         <ComboBox Name="category" Grid.Row="2" Grid.Column="1" Margin="10,4,4,4" Background="#dcdcdc" ItemsSource="{Binding}">
             <ComboBox.ItemTemplate>

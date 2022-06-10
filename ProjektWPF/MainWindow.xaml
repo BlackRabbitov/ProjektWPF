@@ -230,39 +230,50 @@
             </TextBox>
             <Image Grid.Column="1" Height="20" Margin="5,7,22,7" Grid.Row="1" Source="/Source/icons8-search-64.png" >
             </Image>
+            
             <ListBox x:Name="Tasks_ListBox" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding}" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="7,7,15,20" Background="#dcdcdc" MouseDoubleClick="Tasks_ListBox_MouseDoubleClick">
+                <ListBox.Resources>
+                    <BitmapImage x:Key="ProjectIcon" UriSource="Source/icons8-box-important-50.png" />
+                    <Style TargetType="Border">
+
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </ListBox.Resources>
+                
                 <ListBox.ItemTemplate>
                     <DataTemplate >
+
                         <Grid x:Name="BackgroundGrid" Width="335" Height="25" Margin="3" >
-                            <TextBlock Grid.Column="1"  Text="{Binding Name}" VerticalAlignment="Center" Margin="5" />
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="imp"  Style="{StaticResource CircleButton}" Background="#E6E6E6">
+                                <Image Source="{StaticResource ProjectIcon}"></Image>
+                            </Button>
+                            <TextBlock Grid.Column="1"  Text="{Binding Name}" VerticalAlignment="Center" Margin="5,5,5,5" />
                         </Grid>
-                        
                         <DataTemplate.Triggers>
                             <DataTrigger Binding="{Binding Importance}" Value="0">
-                                <Setter TargetName="BackgroundGrid" Property="Background" Value="#C3F4CA"/>
+                                <Setter TargetName="imp" Property="Background" Value="#C3F4CA"/>
                             </DataTrigger>
 
                             <DataTrigger Binding="{Binding Importance}" Value="1">
-                                <Setter TargetName="BackgroundGrid" Property="Background" Value="#F5F08E"/>
+                                <Setter TargetName="imp" Property="Background" Value="#F5F08E"/>
                             </DataTrigger>
 
                             <DataTrigger Binding="{Binding Importance}" Value="2">
-                                <Setter TargetName="BackgroundGrid" Property="Background" Value="#FFA280"/>
+                                <Setter TargetName="imp" Property="Background" Value="#FFA280"/>
                             </DataTrigger>
 
                             <DataTrigger Binding="{Binding Importance}" Value="3">
-                                <Setter TargetName="BackgroundGrid" Property="Background" Value="#FF7063"/>
+                                <Setter TargetName="imp" Property="Background" Value="#FF7063"/>
                             </DataTrigger>
                         </DataTemplate.Triggers>
                         
                     </DataTemplate>
                 </ListBox.ItemTemplate>
                 
-                <ListBox.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </ListBox.Resources>
             </ListBox>
         </Grid>
     </Grid>

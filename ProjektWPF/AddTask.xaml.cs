@@ -28,6 +28,9 @@ namespace ProjektWPF
             InitializeComponent();
             category.DataContext = categories;
             subtasks_list.DataContext = subtasks;
+            imp_text.Text = "not important";
+            BrushConverter bc = new BrushConverter();
+            imp_text.Foreground = (Brush)bc.ConvertFrom("#C3F4CA");
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -55,22 +58,27 @@ namespace ProjektWPF
 
             if (importance.Value == 0)
             {
+                imp_text.Text ="not important";
+                BrushConverter bc = new BrushConverter();
+                imp_text.Foreground = (Brush)bc.ConvertFrom("#C3F4CA");
 
             } else if (importance.Value == 1)
             {
-
+                imp_text.Text = "a little important";
+                BrushConverter bc = new BrushConverter();
+                imp_text.Foreground = (Brush)bc.ConvertFrom("#F5F08E");
             }
             else if (importance.Value == 2)
             {
-
+                imp_text.Text = "important";
+                BrushConverter bc = new BrushConverter();
+                imp_text.Foreground = (Brush)bc.ConvertFrom("#FFA280");
             }
             else if (importance.Value == 3)
             {
-
-            }
-            else if (importance.Value == 4)
-            {
-
+                imp_text.Text = "very important";
+                BrushConverter bc = new BrushConverter();
+                imp_text.Foreground = (Brush)bc.ConvertFrom("#FF7063");
             }
         }
 
