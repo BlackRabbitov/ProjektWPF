@@ -148,10 +148,36 @@ namespace ProjektWPF
         {
             SourceTask = task;
             name.DataContext = SourceTask;
-            importance.DataContext = SourceTask;
             category.DataContext = SourceTask.Category;
             subtasks_listbox.ItemsSource = SourceTask.SubTasks;
             alarms_listbox.ItemsSource = SourceTask.Alerts;
+            //importance.DataContext = SourceTask;
+            if (SourceTask.Importance == 0)
+            {
+                importance.Text = "not important";
+                BrushConverter bc = new BrushConverter();
+                importance.Foreground = (Brush)bc.ConvertFrom("#C3F4CA");
+
+            }
+            else if (SourceTask.Importance == 1)
+            {
+                importance.Text = "a little important";
+                BrushConverter bc = new BrushConverter();
+                importance.Foreground = (Brush)bc.ConvertFrom("#F5F08E");
+            }
+            else if (SourceTask.Importance == 2)
+            {
+                importance.Text = "important";
+                BrushConverter bc = new BrushConverter();
+                importance.Foreground = (Brush)bc.ConvertFrom("#FFA280");
+            }
+            else if (SourceTask.Importance == 3)
+            {
+                importance.Text = "very important";
+                BrushConverter bc = new BrushConverter();
+                importance.Foreground = (Brush)bc.ConvertFrom("#FF7063");
+            }
+
             if (SourceTask.StartDate == null)
             {
                 start_date.Text = "NaN";
@@ -202,14 +228,16 @@ namespace ProjektWPF
                 }
                 SourceTask.SubTasks = taskWindow.subtasks;
                 SourceTask.Category = taskWindow.category.SelectedItem as Models.Category;
+                subtasks_listbox.ItemsSource = SourceTask.SubTasks;
+                subtasks_listbox.Items.Refresh();
                 window.Tasks_ListBox.Items.Refresh();
 
                 name.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
-                importance.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
                 category.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
                 start_date.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
                 end_date.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
-                subtasks_listbox.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+
+                SetSourceTask(SourceTask);
             }
             
         }
