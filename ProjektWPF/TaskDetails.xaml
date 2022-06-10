@@ -26,13 +26,13 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Foreground="White" Margin="4">Name:</TextBlock>
-                <TextBox Name="name" Text="{Binding Name}" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Grid.Column="1" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
+                <TextBox Name="name" Text="{Binding Name}" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Grid.Column="1" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
 
                 <TextBlock Foreground="White" Margin="4" Grid.Row="1">Importance:</TextBlock>
-                <TextBox Name="importance" IsEnabled="False" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
+                <TextBox Name="importance" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Grid.Column="1" Grid.Row="1" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
 
                 <TextBlock Foreground="White" Margin="4" Grid.Row="2">Category:</TextBlock>
-                <TextBox Name="category" Text="{Binding Name}" IsEnabled="False" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
+                <TextBox Name="category" Text="{Binding Name}" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Grid.Column="1" Grid.Row="2" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
                 <Grid Grid.Row="4" Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="90"/>
@@ -42,9 +42,9 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Foreground="White" Margin="4,4,4,4" Grid.ColumnSpan="2" VerticalAlignment="Center">Start date:</TextBlock>
-                    <TextBox Name="start_date" Text="{Binding StartDate}" IsEnabled="False" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="2,4,10,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
+                    <TextBox Name="start_date" Text="{Binding StartDate}" IsReadOnly="True" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="2,4,10,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
                     <TextBlock Foreground="White" Margin="4,4,3.55,4" Grid.Column="2" VerticalAlignment="Center">End date:</TextBlock>
-                    <TextBox Name="end_date" Text="{Binding EndDate}" IsEnabled="False" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
+                    <TextBox Name="end_date" Text="{Binding EndDate}" IsReadOnly="True" DataContext="{Binding UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Margin="10,4,4,4" VerticalAlignment="Center" Background="#dcdcdc"></TextBox>
                 </Grid>
 
                 <Grid Grid.Row="5" Grid.Column="1">

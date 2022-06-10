@@ -162,7 +162,7 @@ namespace ProjektWPF
             else if (SourceTask.Importance == 1)
             {
                 importance.Text = "a little important";
-                importance.Foreground = (Brush)bc.ConvertFrom("#F0E617");
+                importance.Foreground = (Brush)bc.ConvertFrom("#F5F08E");
             }
             else if (SourceTask.Importance == 2)
             {
