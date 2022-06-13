@@ -531,7 +531,7 @@ namespace ProjektWPF
 
         private void sortByCreationDateF()
         {
-            //tasks.Sort((x, y) => DateTime.Compare(x.DateOfCreation, y.DateOfCreation));
+            tasks.Sort((x, y) => DateTime.Compare(x.CreationDate, y.CreationDate));
         }
 
         private void sortByImportanceF()
